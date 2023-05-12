@@ -32,7 +32,7 @@ const RegisterForm = ({value,setValue,createUser}) => {
             <Button
                 style={{ width: '450px' }}
                 onClick={e => e.preventDefault(e) & createUser(e)}>Submit</Button>
-                <Link to='/Login' style={{color:'white'}} >Sign in</Link>
+                <Link to='/Login' >Sign in</Link>
         </form>
       <div className="img"><img src="https://cdn-icons-png.flaticon.com/512/3456/3456388.png" alt="" /></div>
 

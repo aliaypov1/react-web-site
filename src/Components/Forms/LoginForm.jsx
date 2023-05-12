@@ -54,14 +54,19 @@ const LoginForm = ({inputValue,setInputValue,login}) => {
           },
         ]}
       >
-        <Input
+        {/* <Input
         
           style={{ width: '450px' }}
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           placeholder="Password"
           onChange={e => setInputValue({ ...inputValue, password: e.target.value })}
-        />
+        /> */}
+        <Input.Password placeholder="input password" style={{ width: '450px' }}
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          type="password"
+          onChange={e => setInputValue({ ...inputValue, password: e.target.value })} />
+        
       </Form.Item>
       <Form.Item>
         <input
@@ -72,7 +77,7 @@ const LoginForm = ({inputValue,setInputValue,login}) => {
           onClick={() => setValid(prev => !prev)}
           name='remember'
         />
-        <label style={{ marginRight: '20px',color:'white' }}>rememberMy</label>
+        <label style={{ marginRight: '20px' }}>rememberMy</label>
         <input
           style={{ marginRight: "10px" }}
           type="checkbox"
@@ -81,7 +86,7 @@ const LoginForm = ({inputValue,setInputValue,login}) => {
           onClick={() => setRemamberMe(prev => !prev)}
           name='valid'
         />
-        <label style={{color:'white'}}>I agree with the policy</label>
+        <label>I agree with the policy</label>
 
 
 
@@ -89,11 +94,11 @@ const LoginForm = ({inputValue,setInputValue,login}) => {
 
       <Form.Item>
 
-        <Button disabled={!rememberMe} type="primary" htmlType="submit" style={{ marginRight: '20px',color:'white' }} onClick={() => login()}>
+        <Button disabled={!rememberMe} type="primary" htmlType="submit" style={{ marginRight: '20px' }} onClick={() => login()}>
           Log in
         </Button>
 
-        Or <Link to='/Register' style={{color:'white'}}>register now!</Link>
+        Or <Link to='/Register'>register now!</Link>
       </Form.Item>
     </Form>
     <div className="img"><img src="https://cdn-icons-png.flaticon.com/512/3456/3456388.png" alt="" /></div>

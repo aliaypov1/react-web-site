@@ -12,42 +12,46 @@ const Profile = () => {
     const [profile, setProfile] = useState([])
     const [loading, setLoading] = useState(false)
     const [open, setOpen] = useState(false)
-    useEffect(async () => {
-        try{
-            setLoading(true)
-            const res = await axios(`${BASE_URL}GetcurrentUser`, {
-                headers: {
-                    "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
-                }
-            })
-            setProfile(res.data)
-            console.log(res.data)
-            console.log(profile)
-        }catch(e){
+    useEffect(() => {
+        const fetchData = async () => {
+
+
+            try {
+                setLoading(true)
+                const res = await axios(`${BASE_URL}GetcurrentUser`, {
+                    headers: {
+                        "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
+                setProfile(res.data)
+                console.log(res.data)
+                console.log(profile)
+            } catch (e) {
+                setLoading(false)
+            }
             setLoading(false)
         }
-        setLoading(false)
-        
+        fetchData()
     }, [])
-   
+
     return (
         <div className="">
-             <Header/>
-        <div className={style.container}>
-            {loading ? <p>Loading...</p>:profile && (
+            <Header />
+            <div className={style.container}>
+                {loading ? <p>Loading...</p> : profile && (
                     <div className="">
                         <p>имя пользоваьеля : {profile.userName}</p>
                         <p>учетная запись : {profile.email}</p>
                         <p>уровень : {profile.roles}</p>
-                        <button style={{color:'blue'}} onClick={()=> setOpen(true)}>Изменить пароль</button>
+                        <button style={{ color: 'blue' }} onClick={() => setOpen(true)}>Изменить пароль</button>
                     </div>
 
                 )}
-            
-            
-           <ChangeCurrentPassword open={open} close={()=> setOpen(false)}/>
-        </div>
-        
+
+
+                <ChangeCurrentPassword open={open} close={() => setOpen(false)} />
+            </div>
+
         </div>
     );
 };
