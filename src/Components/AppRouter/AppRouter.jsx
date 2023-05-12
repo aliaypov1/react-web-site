@@ -15,7 +15,7 @@ const AppRouter = () => {
                     <Routes>
                         <Route path='/About' element={<About />} />
                         <Route path='/Profile' element={<Profile />} />
-                        <Route path='/NotFound' element={<NotFondPage children='Home Page' navigate='/About' />} />
+                        <Route path='/NotFound' element={<NotFondPage children='Back to Home' navigate='/About' />} />
                         <Route
                             path="*"
                             element={<Navigate to="/NotFound" replace />}
@@ -26,7 +26,7 @@ const AppRouter = () => {
                         <Route path='/Login' element={<Login />} />
                         <Route path='/Register' element={<Register />} />
                         <Route path='/ForgotPassword' element={<ForgotPassword />} />
-                        <Route path='/NotFound' element={<NotFondPage children='Login Page' navigate='/Login' />} />
+                        <Route path='/NotFound' element={<NotFondPage children='Back to Login' navigate='/Login' />} />
                         <Route
                             path="*"
                             element={<Navigate to="/NotFound" replace />}

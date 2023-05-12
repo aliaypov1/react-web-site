@@ -43,3 +43,8 @@ img{
     row-gap: 20px;
     border-radius: 16px;
 }
+body{
+    background: rgb(24,16,159);
+background: linear-gradient(90deg, rgba(24,16,159,1) 0%, rgba(7,7,88,1) 37%, rgba(18,102,119,1) 100%);
+
+}

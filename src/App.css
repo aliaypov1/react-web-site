@@ -25,3 +25,12 @@ body{
     margin: 0 auto;
     padding: 0 20px;
 }
+.not__found{
+    background: url(https://zamanilka.ru/wp-content/uploads/2019/04/krasivye-kartinki-hd-kashcestve-2.jpg)center/cover;
+    height: 100vh;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    padding: 80px;
+    align-items: center;
+}
