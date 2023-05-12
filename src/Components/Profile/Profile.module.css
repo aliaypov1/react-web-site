@@ -1,0 +1,14 @@
+.container{
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: rgb(59, 58, 59);
+    color: aliceblue;
+    font-size: 25px;
+    margin-top: 80px;
+    border-radius: 15px;
+}
+.container:hover{
+    opacity: .9;
+    transition: .2s;
+}
