@@ -8,9 +8,20 @@ const DangerAlert = ({open}) => {
                 direction="vertical"
                 style={{
                     width: '100%',
+                    position:'sticky',
+                    top:'0',
+                    left:'0'
+
                 }}
             >
                 <Alert message="Ошибка попробуйте снова" 
+                style={{
+                    width: '100%',
+                    position:'sticky',
+                    top:'0',
+                    left:'0'
+
+                }}
                 type="error" 
                 showIcon  
                 closable/>

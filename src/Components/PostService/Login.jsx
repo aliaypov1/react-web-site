@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import LoginForm from '../Forms/LoginForm';
 import { BASE_URL } from '../BASE_URL/BASE_URL.js';
 import DangerAlert from '../UI/Alerts/DangerAlert';
@@ -35,14 +35,14 @@ const Login = () => {
     const incrimentCounter =()=>{
         setCounter(counter + 1)
     }
+    
     console.log(counter)
     return (
         <>
         
-        {loading ? <p>Loading...</p>:<p></p>}
             <DangerAlert open={alert} />
             {counter >= 3? <Link to='/ForgotPassword' style={{textAlign:'center',color:'red'}}>забыли пароль</Link>:''}
-            <LoginForm inputValue={inputValue} setInputValue={setInputValue} login={login} />
+            <LoginForm inputValue={inputValue} setInputValue={setInputValue} login={login} loading={loading} />
         </>
     );
 };

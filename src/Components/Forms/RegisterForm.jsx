@@ -2,9 +2,12 @@
 import { Link } from 'react-router-dom';
 import style from './Form.module.css'
 import { Input, Button } from 'antd';
+import Header from '../Header/Header';
 
-const RegisterForm = ({value,setValue,createUser}) => {
+const RegisterForm = ({value,setValue,createUser,loading}) => {
     return (
+        <>
+        <Header/>
         <div className={style.container} >
         <form type='Submit' className={style.inputs}>
             <label htmlFor="">
@@ -29,6 +32,8 @@ const RegisterForm = ({value,setValue,createUser}) => {
                     placeholder='userName'
                     onChange={e => setValue({ ...value, userName: e.target.value })} />
             </label>
+            
+            {loading ? <p>Loading...</p>:''}
             <Button
                 style={{ width: '450px' }}
                 onClick={e => e.preventDefault(e) & createUser(e)}>Submit</Button>
@@ -37,6 +42,7 @@ const RegisterForm = ({value,setValue,createUser}) => {
       <div className="img"><img src="https://cdn-icons-png.flaticon.com/512/3456/3456388.png" alt="" /></div>
 
     </div>
+    </>
     );
 };
 

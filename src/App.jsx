@@ -10,7 +10,7 @@ import ChangeCurrentPassword from './Components/PostService/ChangeCurrentPasswor
 import ForgotPassword from './Components/PostService/ForgotPassword';
 import NotFondPage from './Components/NotFoundPage/NotFondPage';
 import AppRouter from './Components/AppRouter/AppRouter';
-import { Header } from 'antd/es/layout/layout';
+import Content from './Components/Content/Content';
 
 
 const App = () => {

@@ -3,8 +3,9 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
 import style from './Form.module.css'
 import { Link } from 'react-router-dom';
+import Header from '../Header/Header';
 
-const LoginForm = ({inputValue,setInputValue,login}) => {
+const LoginForm = ({inputValue,setInputValue,login,loading}) => {
     
   const [rememberMe, setRemamberMe] = useState(false)
     const [checked, setChecked] = useState(false);
@@ -21,6 +22,8 @@ const LoginForm = ({inputValue,setInputValue,login}) => {
       };
      
     return (
+      <>
+      <Header/>
         <div className={style.container}>
     <Form
       name="normal_login"
@@ -54,21 +57,14 @@ const LoginForm = ({inputValue,setInputValue,login}) => {
           },
         ]}
       >
-        {/* <Input
-        
-          style={{ width: '450px' }}
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          type="password"
-          placeholder="Password"
-          onChange={e => setInputValue({ ...inputValue, password: e.target.value })}
-        /> */}
         <Input.Password placeholder="input password" style={{ width: '450px' }}
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           onChange={e => setInputValue({ ...inputValue, password: e.target.value })} />
-        
+       
       </Form.Item>
       <Form.Item>
+      {loading? <p>Loading...</p> : ''}
         <input
           style={{ marginRight: "10px"}}
           type="checkbox"
@@ -89,20 +85,21 @@ const LoginForm = ({inputValue,setInputValue,login}) => {
         <label>I agree with the policy</label>
 
 
-
+       
       </Form.Item>
 
       <Form.Item>
 
-        <Button disabled={!rememberMe} type="primary" htmlType="submit" style={{ marginRight: '20px' }} onClick={() => login()}>
+        <Button disabled={!rememberMe} type="light" htmlType="submit" style={{ marginRight: '20px' }} onClick={() => login()}>
           Log in
         </Button>
 
-        Or <Link to='/Register'>register now!</Link>
+         <Link to='/Register'>Or register now!</Link>
       </Form.Item>
     </Form>
     <div className="img"><img src="https://cdn-icons-png.flaticon.com/512/3456/3456388.png" alt="" /></div>
    </div>
+   </>
     );
 };
 
