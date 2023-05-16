@@ -4,11 +4,15 @@ import axios from 'axios';
 import { BASE_URL } from '../BASE_URL/BASE_URL';
 import style from './DashBoard.module.css'
 import { Link } from 'react-router-dom';
+import Approve from '../Sellercreate/Approve';
+import Reject from '../Sellercreate/Reject';
 
 const Dashboard = () => {
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
     
+    
+       
     useEffect(()=>{
         const getData = async()=>{
             const res = await  axios(`http://frez773-001-site1.atempurl.com/api/SellerApplication/get-all-applications`,{
@@ -34,6 +38,8 @@ const Dashboard = () => {
                   <p>{item.lastName}</p>
                   <p>{item.phone}</p>
                   <Link to={`/Details/${item.firstName}/${item.id}`}>Details</Link>
+                  <Approve id={item.id}/>
+                  <Reject id={item.id}/>
                 </div>
                 )
             }
