@@ -7,6 +7,8 @@ import About from "../About/About";
 import Profile from "../Profile/Profile";
 import Content from "../Content/Content";
 import { accessToken } from "../Token/Token";
+import Dashboard from "../Dashboard/Dashboard";
+import Sellercreatecurs from "../Sellercreate/Sellercreatecurs";
 
 const AppRouter = () => {
     return (
@@ -17,7 +19,10 @@ const AppRouter = () => {
                         <Route path='/About' element={<About />} />
                         <Route path='/Profile' element={<Profile />} />
                         <Route path='/NotFound' element={<NotFondPage children='Back to Home' navigate='/About' />} />
+                        <Route path='/DashBoard' element={<Dashboard/>}/>
                         <Route path='/' element={<Content/>} />
+                        <Route path='/CreateCursSeller' element={<Sellercreatecurs/>}/>
+                        <Route path='/Details/:firstName/:id'/>
                         <Route
                             path="*"
                             element={<Navigate to="/NotFound" replace />}

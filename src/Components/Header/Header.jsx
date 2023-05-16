@@ -21,6 +21,7 @@ const Header = () => {
             <Link to='/' className={style.header__link}>О нас</Link>
             <a href="#" className={style.header__link}>Услуги</a>
             <a href="#" className={style.header__link}>Контакты</a>
+            <Link to='/DashBoard' className={style.header__link}>Вакансии</Link>
 
 
           </nav>

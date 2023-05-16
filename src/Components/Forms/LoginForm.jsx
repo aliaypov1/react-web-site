@@ -64,7 +64,7 @@ const LoginForm = ({inputValue,setInputValue,login,loading}) => {
        
       </Form.Item>
       <Form.Item>
-      {loading? <p>Loading...</p> : ''}
+      {loading? <div className="loader"></div> : ''}
         <input
           style={{ marginRight: "10px"}}
           type="checkbox"

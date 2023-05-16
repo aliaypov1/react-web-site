@@ -33,7 +33,7 @@ const RegisterForm = ({value,setValue,createUser,loading}) => {
                     onChange={e => setValue({ ...value, userName: e.target.value })} />
             </label>
             
-            {loading ? <p>Loading...</p>:''}
+            {loading ? <div className="loader"></div>:''}
             <Button
                 style={{ width: '450px' }}
                 onClick={e => e.preventDefault(e) & createUser(e)}>Submit</Button>

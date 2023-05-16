@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 import style from './Profile.module.css'
 import UpdatePass from '../Forms/ChangeCurrentPasswordForm';
 import ChangeCurrentPassword from '../PostService/ChangeCurrentPassword';
+import { Link } from 'react-router-dom';
 
 
 const Profile = () => {
@@ -33,13 +34,26 @@ const Profile = () => {
         }
         fetchData()
     }, [])
+    // useEffect (async()=>{
+    //     const res = async()=>{
+    //         const rest = await fetch('http://frez773-001-site1.atempurl.com/api/SellerApplication/get-all-applications',{
+    //              headers: {
+    //                     "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+    //                 }
+    //         } )
+    //         const data = await rest.json()
+    //         console.log(data)
+    //     }
+    //     res()
+    // },[])
 
     return (
         <div className="">
             <Header />
             <div className={style.container}>
-                {loading ? <p>Loading...</p> : profile && (
+                {loading ? <div className="loader"></div> : profile && (
                     <div className="">
+                        <Link to='/CreateCursSeller'>длбавить свой курс</Link>
                         <p>имя пользоваьеля : {profile.userName}</p>
                         <p>учетная запись : {profile.email}</p>
                         <p>уровень : {profile.roles}</p>
