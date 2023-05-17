@@ -1,5 +1,12 @@
 .container{
-    display: flex;
-    justify-content: space-between;
-    row-gap: 20px;
+   display: grid;
+   grid-template-columns: repeat(10, 1fr);
+   max-width: 1400px;
+   margin: 0 auto;
+   background-color: rgb(98, 98, 98);
+   margin-top: 20px;
+   padding: 20px;
+   border-radius: 20px;
+   color: white;
+   column-gap: 20px;
 }

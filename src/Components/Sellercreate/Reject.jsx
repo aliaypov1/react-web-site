@@ -13,7 +13,7 @@ const Reject = ({id}) => {
     }
     return (
         <div>
-            <button onClick={reject}>Reject</button>
+            <button style={{color:'white'}} onClick={reject}>Reject</button>
         </div>
     );
 };

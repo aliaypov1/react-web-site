@@ -9,6 +9,7 @@ import Content from "../Content/Content";
 import { accessToken } from "../Token/Token";
 import Dashboard from "../Dashboard/Dashboard";
 import Sellercreatecurs from "../Sellercreate/Sellercreatecurs";
+import Status from "../Sellercreate/Status";
 
 const AppRouter = () => {
     return (
@@ -22,6 +23,7 @@ const AppRouter = () => {
                         <Route path='/DashBoard' element={<Dashboard/>}/>
                         <Route path='/' element={<Content/>} />
                         <Route path='/CreateCursSeller' element={<Sellercreatecurs/>}/>
+                        <Route path='/Status' element={<Status/>}/>
                         <Route path='/Details/:firstName/:id'/>
                         <Route
                             path="*"

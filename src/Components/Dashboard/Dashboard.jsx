@@ -26,23 +26,54 @@ const Dashboard = () => {
         }
         getData()
     },[])
+    const sort = () => {
 
+        return (
+
+            <>
+                <ul>
+                    {
+
+
+                        result
+                            .sort((a, b) => a.status > b.status ? 1 : -1)
+
+
+                    }
+                </ul>
+            </>
+        )
+
+    }
+    
     return (
         <div>
             <Header/>
-            {
-                result.map((item)=>
-                <div key={item.id} style={{color:'black'}} className={style.container}>
-                    <p>{item.id}</p>
-                  <p>{item.firstName}</p>
-                  <p>{item.lastName}</p>
-                  <p>{item.phone}</p>
-                  <Link to={`/Details/${item.firstName}/${item.id}`}>Details</Link>
-                  <Approve id={item.id}/>
-                  <Reject id={item.id}/>
-                </div>
-                )
-            }
+            <button style={{background:'black', color:'white', padding:'20px',margin:'20px'}}
+                onClick={()=>{
+                    setLoading(true)
+                    sort()
+                    setTimeout(() => { setLoading(false) }, 1000)
+                  }}>не просмотреные</button>
+                  {loading ? <p>Loading...</p> : (
+                     
+                
+                        result.map((item)=>
+                        <div key={item.id} style={{}} className={style.container}>
+                            <p>{item.id}</p>
+                            <p>{item.companyDescription}</p>
+                            <p>{item.companyName}</p>
+                          <p>{item.firstName}</p>
+                          <p>{item.lastName}</p>
+                          <p>{item.phone}</p>
+                          <p>{item.email}</p>
+                          <Approve id={item.id}/>
+                          <Reject id={item.id}/> 
+                        </div>
+                        )
+                    
+                  )}
+           
         </div>
     );
 };

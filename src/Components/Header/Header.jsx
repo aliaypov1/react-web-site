@@ -8,7 +8,7 @@ const Header = () => {
 
   const logout = () => {
     localStorage.removeItem('accessToken')
-    window.location.href = 'http://localhost:3000/Login'
+    window.location.href = 'http://localhost:3000/'
   }
   return (
     <header className={style.header}>

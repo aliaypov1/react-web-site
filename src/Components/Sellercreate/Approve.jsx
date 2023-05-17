@@ -14,7 +14,7 @@ const Approve = ({id}) => {
         }
     return (
         <div>
-            <button onClick={approve}>approve</button>
+            <button style={{color:'white'}} onClick={approve}>approve</button>
         </div>
     );
 };

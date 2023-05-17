@@ -58,6 +58,7 @@ const Profile = () => {
                         <p>учетная запись : {profile.email}</p>
                         <p>уровень : {profile.roles}</p>
                         <button style={{ color: 'blue' }} onClick={() => setOpen(true)}>Изменить пароль</button>
+                        <Link to='/Status'>мой заявки</Link>
                     </div>
 
                 )}
