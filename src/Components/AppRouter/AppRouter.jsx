@@ -10,6 +10,7 @@ import { accessToken } from "../Token/Token";
 import Dashboard from "../Dashboard/Dashboard";
 import Sellercreatecurs from "../Sellercreate/Sellercreatecurs";
 import Status from "../Sellercreate/Status";
+import Partner from "../Partner/Partner";
 
 const AppRouter = () => {
     return (
@@ -24,6 +25,7 @@ const AppRouter = () => {
                         <Route path='/' element={<Content/>} />
                         <Route path='/CreateCursSeller' element={<Sellercreatecurs/>}/>
                         <Route path='/Status' element={<Status/>}/>
+                        <Route path='/Partner' element={<Partner/>}/>
                         <Route path='/Details/:firstName/:id'/>
                         <Route
                             path="*"

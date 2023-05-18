@@ -49,6 +49,7 @@ const Dashboard = () => {
     return (
         <div>
             <Header/>
+            <div className="container" style={{background:'black',padding:'20px',marginTop:'80px',borderRadius:'16px',maxWidth:'1400px'}}>
             <button style={{background:'black', color:'white', padding:'20px',margin:'20px'}}
                 onClick={()=>{
                     setLoading(true)
@@ -69,11 +70,12 @@ const Dashboard = () => {
                           <p>{item.email}</p>
                           <Approve id={item.id}/>
                           <Reject id={item.id}/> 
+                          {item.status === 0 ? <p>не просмотренно</p> : item.status === 1 ? <p style={{background:'red',borderRadius:"5px",display:'flex',justifyContent:'center',alignItems:'center'}}>отказано</p> :<p  style={{background:'green',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:"5px"}}>принято</p>  }
                         </div>
                         )
                     
                   )}
-           
+           </div>
         </div>
     );
 };
