@@ -62,14 +62,8 @@ const Dashboard = () => {
                         result.map((item)=>
                         <div key={item.id} style={{}} className={style.container}>
                             <p>{item.id}</p>
-                            <p>{item.companyDescription}</p>
-                            <p>{item.companyName}</p>
-                          <p>{item.firstName}</p>
-                          <p>{item.lastName}</p>
-                          <p>{item.phone}</p>
-                          <p>{item.email}</p>
-                          <Approve id={item.id}/>
-                          <Reject id={item.id}/> 
+                          <p>{item.companyName}</p>
+                          <Link to={`/Details/${item.id}`}>more</Link>
                           {item.status === 0 ? <p>не просмотренно</p> : item.status === 1 ? <p style={{background:'red',borderRadius:"5px",display:'flex',justifyContent:'center',alignItems:'center'}}>отказано</p> :<p  style={{background:'green',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:"5px"}}>принято</p>  }
                         </div>
                         )

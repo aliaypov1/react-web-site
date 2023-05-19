@@ -19,7 +19,7 @@ const Header = () => {
 
             <a href='http://localhost:3000/About' className={style.header__logo}>Home</a>
             <Link to='/' className={style.header__link}>О нас</Link>
-            <a href="#" className={style.header__link}>Услуги</a>
+            <Link to='/Course' className={style.header__link}>Курсы</Link>
             <a href="#" className={style.header__link}>Контакты</a>
             <Link to='/DashBoard' className={style.header__link}>Вакансии</Link>
 

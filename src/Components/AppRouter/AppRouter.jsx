@@ -11,6 +11,8 @@ import Dashboard from "../Dashboard/Dashboard";
 import Sellercreatecurs from "../Sellercreate/Sellercreatecurs";
 import Status from "../Sellercreate/Status";
 import Partner from "../Partner/Partner";
+import Course from "../Course/Course";
+import Details from "../Details/Details";
 
 const AppRouter = () => {
     return (
@@ -26,7 +28,8 @@ const AppRouter = () => {
                         <Route path='/CreateCursSeller' element={<Sellercreatecurs/>}/>
                         <Route path='/Status' element={<Status/>}/>
                         <Route path='/Partner' element={<Partner/>}/>
-                        <Route path='/Details/:firstName/:id'/>
+                        <Route path='/Course' element={<Course/>}/>
+                        <Route path='/Details/:id' element={<Details/>}/>
                         <Route
                             path="*"
                             element={<Navigate to="/NotFound" replace />}

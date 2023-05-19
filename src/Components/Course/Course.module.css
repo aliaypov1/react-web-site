@@ -1,0 +1,40 @@
+.about {
+    width: 100%;
+    padding: 220px 0;
+    background: url(https://s.zagranitsa.com/images/articles/1996/870x486/4fcb79039e16b5ecd0cecddd3a82c5a9.jpg?1446718355)center/cover fixed;
+    margin-bottom: 80px;
+}
+
+.about__title {
+    color: #FFF;
+    font-size: 45px;
+}
+
+.about__text {
+    font-size: 22px;
+    color: #FFF;
+    margin-top: 25px;
+}
+
+.buttons {
+    margin-top: 40px;
+    display: flex;
+    column-gap: 20px;
+}
+
+.about__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper__title {
+    color: #FFF;
+    font-size: 29px;
+    margin-top: 90px;
+}
+
+.wrapper__text {
+    color: rgb(173, 215, 20);
+    font-size: 43px;
+    font-weight: 700;
+}
