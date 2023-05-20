@@ -3,13 +3,17 @@ import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import style from './Course.module.css'
 import { Link } from 'react-router-dom';
-import { Card } from 'antd';
+import { Card, Skeleton } from 'antd';
+import Buy from '../Forms/Buy';
+
 
 const Course = () => {
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
     useEffect(() => {
+
         const getData = async () => {
+            setLoading(true)
             const resp = await axios.post(
                 'http://frez773-001-site1.atempurl.com/api/Course/courses',
                 null,
@@ -22,6 +26,7 @@ const Course = () => {
             console.log(resp);
             console.log(result);
             setResult(resp.data)
+            setTimeout(() => { setLoading(false) }, 2000)
         };
         getData();
     }, []);
@@ -53,15 +58,19 @@ const Course = () => {
                     </div>
                 </div>
             </section>
-            {loading ? <div className='loader'></div> : ''}
-            {
+            {loading ?
+                <div className="container">
+                    <Skeleton avatar paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                    <Skeleton avatar paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                    <Skeleton avatar paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                </div> :
                 result.map((item) =>
                 (
-                   
+
                     <div className="container" key={item.id}>
-                        <Card title={item.title} style={{marginBottom:'30px'}}>
-                            <Card type="inner" title={item.description} extra={<a> приобрести за  <span style={{color:'green'}}>{item.price}s</span></a>}>
-                              <div className="" style={{background:'rgb(173, 215, 20)',width:'100%',height:'100%',borderRadius:'3px',color:"white",textAlign:'center',fontSize:"20px"}}>Купить</div>
+                        <Card title={item.title} style={{ marginBottom: '30px' }}>
+                            <Card type="inner" title={item.description} extra={<a> приобрести за  <span style={{ color: 'green' }}>{item.price}s</span></a>}>
+                                <div className="" style={{ background: 'rgb(173, 215, 20)', width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "20px" }}><Buy name={item.title} id={item.id} /></div>
                             </Card>
                         </Card>
                     </div>
@@ -69,7 +78,22 @@ const Course = () => {
                 )
 
             }
-           
+            {/* {
+                result.map((item) =>
+                (
+                   
+                    <div className="container" key={item.id}>
+                        <Card title={item.title} style={{marginBottom:'30px'}}>
+                            <Card type="inner" title={item.description} extra={<a> приобрести за  <span style={{color:'green'}}>{item.price}s</span></a>}>
+                              <div className="" style={{background:'rgb(173, 215, 20)',width:'100%',height:'100%',borderRadius:'3px',color:"white",textAlign:'center',fontSize:"20px"}}><Buy name={item.title} id={item.id}/></div>
+                            </Card>
+                        </Card>
+                    </div>
+                )
+                )
+
+            } */}
+
         </div>
     );
 };

@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import ChangeCurrentPasswordForm from '../Forms/ChangeCurrentPasswordForm';
 import axios from 'axios';
 import { BASE_URL } from '../BASE_URL/BASE_URL';
-const ChangeCurrentPassword = ({open,close}) => {
+import ProfileNavigate from '../Header/ProfileHeader';
+import Header from '../Header/Header';
+const ChangeCurrentPassword = () => {
     const [value, setValue] = useState({
         currentPassword: "",
         newPassword: ""
@@ -17,10 +19,12 @@ const ChangeCurrentPassword = ({open,close}) => {
         }
        
     }
-    if(!open) return null
+    
     return (
         <>
-            <ChangeCurrentPasswordForm value={value} setValue={setValue} update={updatePassword} close={close} />
+        <Header/>
+        <ProfileNavigate/>
+            <ChangeCurrentPasswordForm value={value} setValue={setValue} update={updatePassword}  />
             
         </>
     );

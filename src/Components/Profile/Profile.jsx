@@ -3,14 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { BASE_URL } from '../BASE_URL/BASE_URL';
 import Header from '../Header/Header';
 import style from './Profile.module.css'
-import ChangeCurrentPassword from '../PostService/ChangeCurrentPassword';
-import { Link } from 'react-router-dom';
+import ProfileNavigate from '../Header/ProfileHeader';
 
 
 const Profile = () => {
     const [profile, setProfile] = useState([])
     const [loading, setLoading] = useState(false)
-    const [open, setOpen] = useState(false)
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -35,17 +33,17 @@ const Profile = () => {
     return (
         <div className="">
             <Header />
+            <ProfileNavigate/>
             <div className={style.container}>
                 {loading ? <div className="loader"></div> : profile && (
-                    <div className="">
-                        <p>имя пользоваьеля : {profile.userName}</p>
-                        <p>учетная запись : {profile.email}</p>
-                        <p>уровень : {profile.roles}</p>
-                        <button style={{ color: 'blue' }} onClick={() => setOpen(true)}>Изменить пароль</button>
-                        <Link to='/Status'>мой заявки</Link>
+                    <div className={style.content}>
+                        <a className={style.img}><img src="https://i.pinimg.com/originals/ff/a0/9a/ffa09aec412db3f54deadf1b3781de2a.png" width='10px' alt=""   /></a>
+                        
+                        <p> {profile.userName}</p>
+                        <p> {profile.email}</p>
+                        <p> {profile.roles}</p>
                     </div>
                 )}
-                <ChangeCurrentPassword open={open} close={() => setOpen(false)} />
             </div>
 
         </div>

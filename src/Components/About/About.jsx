@@ -8,6 +8,7 @@ import { seller } from '../Token/Token';
 
 const About = () => {
     const [loading, setLoading] = useState(false)
+    const [result, setResult] = useState([])
     useEffect(()=>{
         const getStatus = async()=>{
             const resp = await axios('http://frez773-001-site1.atempurl.com/api/SellerApplication/status',{
@@ -18,13 +19,15 @@ const About = () => {
                 
             })
             console.log(resp)
-            if(resp.data.statusCode === 404){
-                localStorage.setItem('Seller','notseller')
-            }else if(resp.data.applicationStatus === 'Approved'){
-                localStorage.setItem('Seller','Approved')
-            }else if(resp.data.applicationStatus === 'Rejected'){
-                localStorage.setItem('Seller','Rejected')
-            }
+            setResult(resp.data.applicationStatus)
+            console.log(result)
+            // if(resp.data.statusCode === 404){
+            //     localStorage.setItem('Seller','notseller')
+            // }else if(resp.data.applicationStatus === 'Approved'){
+            //     localStorage.setItem('Seller','Approved')
+            // }else if(resp.data.applicationStatus === 'Rejected'){
+            //     localStorage.setItem('Seller','Rejected')
+            // }
         }
         getStatus()
     },[])
@@ -39,7 +42,8 @@ const About = () => {
                     <p className={style.about__text}>Ваш эксперт по образованию за рубежом</p>
                     <div className={style.buttons}>
                         
-                    <Link to={seller==='Approved' ? '/Appruved' : seller ==='Rejected' ? '/Rejected' :'/Partner'} className={style.about__text} style={{background:'rgb(173, 215, 20)', padding:'10px', borderRadius:'9px'}}>добавить свой курс</Link>
+                    <Link to={result==='Approved' ? '/Appruved' : result ==='Rejected' ? '/Rejected' :'/Partner'} className={style.about__text} style={{background:'rgb(173, 215, 20)', padding:'10px', borderRadius:'9px'}}>добавить свой курс</Link>
+                    {/* <Link to={seller==='Approved' ? '/Appruved' : seller ==='Rejected' ? '/Rejected' :'/Partner'} className={style.about__text} style={{background:'rgb(173, 215, 20)', padding:'10px', borderRadius:'9px'}}>добавить свой курс</Link> */}
                     </div>
                     <div className={style.about__wrapper}>
                         <a href="#" className={style.wrapper__title}><p className={style.wrapper__text} >2023+</p> год основания</a>

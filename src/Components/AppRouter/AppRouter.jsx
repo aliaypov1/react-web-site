@@ -15,6 +15,7 @@ import Course from "../Course/Course";
 import Details from "../Details/Details";
 import SellerRejected from "../Sellercreate/SellerRejected";
 import SellerAppruved from "../Sellercreate/SellerAppruved";
+import ChangeCurrentPassword from "../PostService/ChangeCurrentPassword";
 
 const AppRouter = () => {
     return (
@@ -32,6 +33,8 @@ const AppRouter = () => {
                         <Route path='/Partner' element={<Partner/>}/>
                         <Route path='/Course' element={<Course/>}/>
                         <Route path='/Details/:id' element={<Details/>}/>
+                        <Route path='/ForgotPassword' element={<ForgotPassword />} />
+                        <Route path='/ChangePassword' element={<ChangeCurrentPassword/>}/>
                         <Route path='/Appruved' element={<SellerAppruved/>}/>
                         <Route path='/Rejected' element={<SellerRejected/>}/>
                         <Route
@@ -43,7 +46,6 @@ const AppRouter = () => {
                     <Routes>
                         <Route path='/Login' element={<Login />} />
                         <Route path='/Register' element={<Register />} />
-                        <Route path='/ForgotPassword' element={<ForgotPassword />} />
                         <Route path='/NotFound' element={<NotFondPage children='Back to Login' navigate='/Login' />} />
                         <Route path='/' element={<Content/>} />
                         <Route
