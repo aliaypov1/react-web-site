@@ -1,12 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './About.module.css'
 import Header from '../Header/Header';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { seller } from '../Token/Token';
 
 
 const About = () => {
-
-
+    const [loading, setLoading] = useState(false)
+    useEffect(()=>{
+        const getStatus = async()=>{
+            const resp = await axios('http://frez773-001-site1.atempurl.com/api/SellerApplication/status',{
+             
+                    headers: {
+                        "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                
+            })
+            console.log(resp)
+            if(resp.data.statusCode === 404){
+                localStorage.setItem('Seller','notseller')
+            }else if(resp.data.applicationStatus === 'Approved'){
+                localStorage.setItem('Seller','Approved')
+            }else if(resp.data.applicationStatus === 'Rejected'){
+                localStorage.setItem('Seller','Rejected')
+            }
+        }
+        getStatus()
+    },[])
+   
     return (
         <>
         <Header/>
@@ -17,7 +39,7 @@ const About = () => {
                     <p className={style.about__text}>Ваш эксперт по образованию за рубежом</p>
                     <div className={style.buttons}>
                         
-                    <Link to='/Partner' className={style.about__text} style={{background:'rgb(173, 215, 20)', padding:'10px', borderRadius:'9px'}}>добавить свой курс</Link>
+                    <Link to={seller==='Approved' ? '/Appruved' : seller ==='Rejected' ? '/Rejected' :'/Partner'} className={style.about__text} style={{background:'rgb(173, 215, 20)', padding:'10px', borderRadius:'9px'}}>добавить свой курс</Link>
                     </div>
                     <div className={style.about__wrapper}>
                         <a href="#" className={style.wrapper__title}><p className={style.wrapper__text} >2023+</p> год основания</a>

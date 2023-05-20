@@ -13,6 +13,8 @@ import Status from "../Sellercreate/Status";
 import Partner from "../Partner/Partner";
 import Course from "../Course/Course";
 import Details from "../Details/Details";
+import SellerRejected from "../Sellercreate/SellerRejected";
+import SellerAppruved from "../Sellercreate/SellerAppruved";
 
 const AppRouter = () => {
     return (
@@ -30,6 +32,8 @@ const AppRouter = () => {
                         <Route path='/Partner' element={<Partner/>}/>
                         <Route path='/Course' element={<Course/>}/>
                         <Route path='/Details/:id' element={<Details/>}/>
+                        <Route path='/Appruved' element={<SellerAppruved/>}/>
+                        <Route path='/Rejected' element={<SellerRejected/>}/>
                         <Route
                             path="*"
                             element={<Navigate to="/NotFound" replace />}

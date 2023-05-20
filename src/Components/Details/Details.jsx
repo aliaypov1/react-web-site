@@ -1,13 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from '../Header/Header';
 import style from './Details.module.css'
 import { Card } from 'antd';
 import Approve from '../Sellercreate/Approve';
 import Reject from '../Sellercreate/Reject';
 const Details = () => {
-    const params = useParams()
+    const {id} = useParams()
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
     const gridStyle = {
@@ -18,13 +18,15 @@ const Details = () => {
 
 
     useEffect(() => {
-        let id = params.id - 1
         const getData = async () => {
-            const res = await axios(`http://frez773-001-site1.atempurl.com/api/SellerApplication/get-all-applications`, {
+            const res = await axios(`http://frez773-001-site1.atempurl.com/api/SellerApplication/seller-app/${id}`, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
                 }
-            }).then((res) => { setResult(res.data[id]); console.log(res.data[id]) })
+            })
+            console.log(res)
+            console.log(result)
+            setResult(res.data)
 
         }
         getData()
@@ -35,7 +37,8 @@ const Details = () => {
             <div className={style.container}>
                 <div style={{ color: "#000" }} className={style.modal}>
                     {result ? <>
-                        <Card title="Card Title">
+                        <Card title={result.companyName}>
+    <Link to='/DashBoard' style={gridStyle}>вернуться назад</Link>
     <Card.Grid style={gridStyle}>{result.id}</Card.Grid>
     <Card.Grid style={gridStyle}>{result.firstName}</Card.Grid>
     <Card.Grid hoverable={false} style={gridStyle}>

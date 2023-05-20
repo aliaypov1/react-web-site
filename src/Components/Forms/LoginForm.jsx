@@ -82,7 +82,7 @@ const LoginForm = ({inputValue,setInputValue,login,loading}) => {
           onClick={() => setRemamberMe(prev => !prev)}
           name='valid'
         />
-        <label>I agree with the policy</label>
+        <label>Я не робот</label>
 
 
        
@@ -90,7 +90,7 @@ const LoginForm = ({inputValue,setInputValue,login,loading}) => {
 
       <Form.Item>
 
-        <Button disabled={!rememberMe} type="light" htmlType="submit" style={{ marginRight: '20px' }} onClick={() => login()}>
+        <Button disabled={!rememberMe}  htmlType="submit" style={{ marginRight: '20px' }} onClick={() => login()}>
           Log in
         </Button>
 

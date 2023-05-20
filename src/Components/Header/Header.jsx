@@ -9,7 +9,10 @@ const Header = () => {
   const logout = () => {
     localStorage.removeItem('accessToken')
     window.location.href = 'http://localhost:3000/'
+    
+    localStorage.removeItem('Seller')
   }
+  
   return (
     <header className={style.header}>
       <div className={style.container}>
@@ -17,7 +20,7 @@ const Header = () => {
         {accessToken ? (<>
           <nav>
 
-            <a href='http://localhost:3000/About' className={style.header__logo}>Home</a>
+            <a href='http://localhost:3000/About'  className={style.header__logo}>Home</a>
             <Link to='/' className={style.header__link}>О нас</Link>
             <Link to='/Course' className={style.header__link}>Курсы</Link>
             <a href="#" className={style.header__link}>Контакты</a>

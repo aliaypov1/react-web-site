@@ -60,9 +60,8 @@ const Course = () => {
                    
                     <div className="container" key={item.id}>
                         <Card title={item.title} style={{marginBottom:'30px'}}>
-                            <Card type="inner" title={item.description} extra={<a href="#">More</a>}>
-                               приобрести за  <span style={{color:'green'}}>{item.price}s</span>
-                                
+                            <Card type="inner" title={item.description} extra={<a> приобрести за  <span style={{color:'green'}}>{item.price}s</span></a>}>
+                              <div className="" style={{background:'rgb(173, 215, 20)',width:'100%',height:'100%',borderRadius:'3px',color:"white",textAlign:'center',fontSize:"20px"}}>Купить</div>
                             </Card>
                         </Card>
                     </div>
