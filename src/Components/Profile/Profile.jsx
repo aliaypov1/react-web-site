@@ -38,10 +38,12 @@ const Profile = () => {
                 {loading ? <div className="loader"></div> : profile && (
                     <div className={style.content}>
                         <a className={style.img}><img src="https://i.pinimg.com/originals/ff/a0/9a/ffa09aec412db3f54deadf1b3781de2a.png" width='10px' alt=""   /></a>
-                        
+                      
+                        <div className="">
                         <p> {profile.userName}</p>
                         <p> {profile.email}</p>
                         <p> {profile.roles}</p>
+                        </div>
                     </div>
                 )}
             </div>

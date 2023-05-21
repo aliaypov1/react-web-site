@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import style from './Heade.module.css'
 import { Link } from 'react-router-dom';
 import { accessToken } from '../Token/Token';
+import HeaderNavigate from './HeaderNavigate';
 import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Badge, Space } from 'antd';
 const Header = ({props}) => {
 
   const logout = () => {
@@ -29,11 +29,8 @@ const Header = ({props}) => {
           </nav>
           <nav>{props}</nav>
           <nav>
-            <Link to='/Profile' >
-              <Badge count={`99+`}>
-                <Avatar shape="square" icon={<UserOutlined />} />
-              </Badge>
-            </Link>
+         
+            <HeaderNavigate children={<UserOutlined />} />
             <a onClick={logout} className={style.header__link}>Выйти</a></nav>
         </>)
           :

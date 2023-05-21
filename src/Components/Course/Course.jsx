@@ -108,7 +108,7 @@ const Course = () => {
                     <p className={style.about__text}>Ваш эксперт по образованию за рубежом</p>
                     <div className={style.buttons}>
 
-                        <Link to='/Partner' className={style.about__text} style={{ background: 'rgb(173, 215, 20)', padding: '10px', borderRadius: '9px' }}>добавить свой курс</Link>
+                        <Link  className={style.about__text} style={{ background: 'rgb(173, 215, 20)', padding: '10px', borderRadius: '9px' }}></Link>
                     </div>
                     <div className={style.about__wrapper}>
                         <a href="#" className={style.wrapper__title}><p className={style.wrapper__text} >2023+</p> год основания</a>
