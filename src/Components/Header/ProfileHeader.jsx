@@ -30,7 +30,7 @@ const items = [
   },
   {
     label: (
-     <Link>Мои курсы</Link>
+     <Link to='/MyCourse'>Мои курсы</Link>
     ),
     key: 'alipay',
   },

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { accessToken } from '../Token/Token';
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Badge, Space } from 'antd';
-const Header = () => {
+const Header = ({props}) => {
 
   const logout = () => {
     localStorage.removeItem('accessToken')
@@ -26,8 +26,8 @@ const Header = () => {
             <a href="#" className={style.header__link}>Контакты</a>
             <Link to='/DashBoard' className={style.header__link}>Вакансии</Link>
 
-
           </nav>
+          <nav>{props}</nav>
           <nav>
             <Link to='/Profile' >
               <Badge count={`99+`}>

@@ -16,6 +16,7 @@ import Details from "../Details/Details";
 import SellerRejected from "../Sellercreate/SellerRejected";
 import SellerAppruved from "../Sellercreate/SellerAppruved";
 import ChangeCurrentPassword from "../PostService/ChangeCurrentPassword";
+import MyCourse from "../Course/MyCourse";
 
 const AppRouter = () => {
     return (
@@ -37,6 +38,7 @@ const AppRouter = () => {
                         <Route path='/ChangePassword' element={<ChangeCurrentPassword/>}/>
                         <Route path='/Appruved' element={<SellerAppruved/>}/>
                         <Route path='/Rejected' element={<SellerRejected/>}/>
+                        <Route path='/MyCourse' element={<MyCourse/>}/>
                         <Route
                             path="*"
                             element={<Navigate to="/NotFound" replace />}

@@ -2,6 +2,7 @@ import { Button, Modal, Space } from 'antd';
 import { ExclamationCircleFilled } from '@ant-design/icons';
 import React from 'react';
 import axios from 'axios';
+import Message from '../UI/Modals/Message';
 const { confirm } = Modal;
 const Buy = ({ name,id }) => {
     
@@ -20,6 +21,7 @@ const Buy = ({ name,id }) => {
             icon: <ExclamationCircleFilled />,
             content: name,
             okType: 'default',
+            okText: 'Yes' ,
             onOk() {
                 addCourse()
             },

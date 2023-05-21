@@ -31,6 +31,7 @@ const LoginForm = ({ inputValue, setInputValue, login, loading }) => {
             remember: true,
           }}
           onFinish={onFinish}
+          style={{background:'white',padding:'70px',borderRadius:'5px',WebkitBoxShadow:'22px 29px 25px 4px rgba(34, 60, 80, 0.2)'}}
         >
           <Form.Item
             name="username"
@@ -97,7 +98,7 @@ const LoginForm = ({ inputValue, setInputValue, login, loading }) => {
             <Link to='/Register'>Or register now!</Link>
           </Form.Item>
         </Form>
-        <div className="img"><img src="https://cdn-icons-png.flaticon.com/512/3456/3456388.png" alt="" /></div>
+        {/* <div className="img"><img src="https://cdn-icons-png.flaticon.com/512/3456/3456388.png" alt="" /></div> */}
       </div>
     </>
   );

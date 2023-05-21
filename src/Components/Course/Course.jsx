@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import style from './Course.module.css'
 import { Link } from 'react-router-dom';
-import { Card, Skeleton } from 'antd';
+import { Card, Skeleton, Menu } from 'antd';
 import Buy from '../Forms/Buy';
-
-
+import Search from 'antd/es/transfer/search';
 const Course = () => {
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
+    const [sortByPrice, setSortByPrice] = useState(null);
+
+    const [searchValue, setSearchValue] = useState('');
     useEffect(() => {
 
         const getData = async () => {
@@ -26,21 +28,79 @@ const Course = () => {
             console.log(resp);
             console.log(result);
             setResult(resp.data)
-            setTimeout(() => { setLoading(false) }, 2000)
+            setTimeout(() => { setLoading(false) }, 500)
         };
         getData();
     }, []);
-    // const postData = async()=>{
-    //     const res = await axios.post('http://frez773-001-site1.atempurl.com/api/Course/courses',{
-    //         headers: {
-    //             "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
-    //         }
-    //     })
-    //     console.log(res)
-    // }
+    const handleSearchChange = (e) => {
+        setSearchValue(e.target.value);
+    };
+
+
+    const handleSortByAsc = () => {
+        setSortByPrice('asc');
+    };
+
+    const handleSortByDesc = () => {
+        setSortByPrice('desc');
+    };
+
+    let sortedAndFilteredCourses = [...result];
+    if (searchValue) {
+        sortedAndFilteredCourses = sortedAndFilteredCourses.filter(item =>
+            item.title.toLowerCase().includes(searchValue.toLowerCase())
+        );
+    }
+
+
+    if (sortByPrice === 'asc') {
+        sortedAndFilteredCourses.sort((a, b) => a.price - b.price);
+    } else if (sortByPrice === 'desc') {
+        sortedAndFilteredCourses.sort((a, b) => b.price - a.price);
+    }
+    const items = [
+
+        {
+            label: 'сортировать по',
+            key: 'SubMenu',
+            children: [
+                {
+                    type: 'group',
+                    children: [
+                        {
+                            label: (
+                                <p onClick={handleSortByDesc}>по возрастанию</p>
+                            ),
+                            key: 'setting:1',
+                        },
+                        {
+                            label: (
+                                <p onClick={handleSortByAsc}>по убыванию</p>
+                            ),
+                            key: 'setting:1',
+                        },
+
+                    ],
+                },
+            ],
+        },
+
+    ];
+    const [current, setCurrent] = useState('mail');
+    const onClick = (e) => {
+        console.log('click ', e);
+        setCurrent(e.key);
+    };
     return (
         <div>
-            <Header />
+            <Header props={<Search
+                placeholder="input search text"
+                onChange={handleSearchChange}
+                value={searchValue}
+                style={{
+                    width: 200,
+                }}
+            />} />
             <section className={style.about}>
 
                 <div className="container">
@@ -58,13 +118,17 @@ const Course = () => {
                     </div>
                 </div>
             </section>
+            <div style={{ textAlign: 'center', padding: '30px 120px' }}>
+                <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
+            </div>
+
             {loading ?
                 <div className="container">
-                    <Skeleton avatar paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
-                    <Skeleton avatar paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
-                    <Skeleton avatar paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                    <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                    <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                    <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
                 </div> :
-                result.map((item) =>
+                sortedAndFilteredCourses.length > 0 ? sortedAndFilteredCourses.map((item) =>
                 (
 
                     <div className="container" key={item.id}>
@@ -76,23 +140,11 @@ const Course = () => {
                     </div>
                 )
                 )
+                    :
+                    <p style={{ color: 'black', fontSize: '60px', textAlign: 'center', padding: '50px', height: '100vh' }}>нечего не найденно</p>
 
             }
-            {/* {
-                result.map((item) =>
-                (
-                   
-                    <div className="container" key={item.id}>
-                        <Card title={item.title} style={{marginBottom:'30px'}}>
-                            <Card type="inner" title={item.description} extra={<a> приобрести за  <span style={{color:'green'}}>{item.price}s</span></a>}>
-                              <div className="" style={{background:'rgb(173, 215, 20)',width:'100%',height:'100%',borderRadius:'3px',color:"white",textAlign:'center',fontSize:"20px"}}><Buy name={item.title} id={item.id}/></div>
-                            </Card>
-                        </Card>
-                    </div>
-                )
-                )
 
-            } */}
 
         </div>
     );
