@@ -34,7 +34,7 @@ const MyCourse = () => {
         if (!isFirstRequestComplete) {
           return;
         }
-        const resp = await axios.post(`http://frez773-001-site1.atempurl.com/api/Course/students/${userID}/courses`, {}, {
+        const resp = await axios(`http://frez773-001-site1.atempurl.com/api/Course/students/${userID}/courses`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
           }

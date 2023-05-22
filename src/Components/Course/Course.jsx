@@ -16,9 +16,9 @@ const Course = () => {
 
         const getData = async () => {
             setLoading(true)
-            const resp = await axios.post(
+            const resp = await axios(
                 'http://frez773-001-site1.atempurl.com/api/Course/courses',
-                null,
+        
                 {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
@@ -118,7 +118,7 @@ const Course = () => {
                     </div>
                 </div>
             </section>
-            <div style={{ textAlign: 'center', padding: '30px 120px' }}>
+            <div  className='container'>
                 <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
             </div>
 
@@ -133,6 +133,7 @@ const Course = () => {
 
                     <div className="container" key={item.id}>
                         <Card title={item.title} style={{ marginBottom: '30px' }}>
+                            <p style={{textAlign:'right',margin:'8px',}}><Link to={`/Course/${item.id}/${item.title}`}  style={{color:"blue"}}>деталии</Link></p>
                             <Card type="inner" title={item.description} extra={<a> приобрести за  <span style={{ color: 'green' }}>{item.price}s</span></a>}>
                                 <div className="" style={{ background: 'rgb(173, 215, 20)', width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "20px" }}><Buy name={item.title} id={item.id} /></div>
                             </Card>
