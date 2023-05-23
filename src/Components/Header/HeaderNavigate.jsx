@@ -10,7 +10,7 @@ const items = [
     key: 'профиля',
   },
   {
-    label: <Link to='/ChangePassword'>Безопасность</Link>,
+    label: <Link to='/Security'>Безопасность</Link>,
     key: 'Безопасноть',
   },
   

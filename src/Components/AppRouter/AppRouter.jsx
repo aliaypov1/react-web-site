@@ -20,6 +20,8 @@ import MyCourse from "../Course/MyCourse";
 import CourseDetails from "../Course/CourseDetails";
 import ProfileSearch from "../Profile/ProfileSearch";
 import NotRevievid from "../Sellercreate/NotRevievid";
+import Security from "../Security/Security";
+import ChangeCourse from "../Course/ChangeCourse";
 
 const AppRouter = () => {
     return (
@@ -37,6 +39,7 @@ const AppRouter = () => {
                         <Route path='/Partner' element={<Partner/>}/>
                         <Route path='/Course' element={<Course/>}/>
                         <Route path='/Details/:id' element={<Details/>}/>
+                        <Route path='/Security' element={<Security/>}/>
                         <Route path='/ChangePassword' element={<ChangeCurrentPassword/>}/>
                         <Route path='/Appruved' element={<SellerAppruved/>}/>
                         <Route path='/Rejected' element={<SellerRejected/>}/>
@@ -44,6 +47,7 @@ const AppRouter = () => {
                         <Route path='/Course/:id/:title' element={<CourseDetails/>}/>
                         <Route path='/ProfileSearch/:id/:studentId/:userName' element={<ProfileSearch/>}/>
                         <Route path='/NotReviewed' element={<NotRevievid/>}/>
+                        <Route path='/ChangeCourse/:id/:title' element={<ChangeCourse/>}/>
                         <Route
                             path="*"
                             element={<Navigate to="/NotFound" replace />}

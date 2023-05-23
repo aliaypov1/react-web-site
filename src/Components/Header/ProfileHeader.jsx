@@ -19,7 +19,7 @@ const items = [
         children: [
           {
             label: (
-                <Link to='/ChangePassword'>Безопасность</Link>
+                <Link to='/Security'>Безопасность</Link>
             ),
             key: 'setting:1',
           },

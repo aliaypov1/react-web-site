@@ -24,7 +24,7 @@ const Header = ({props}) => {
             <Link to='/' className={style.header__link}>О нас</Link>
             <Link to='/Course' className={style.header__link}>Курсы</Link>
             <a href="#" className={style.header__link}>Контакты</a>
-            <Link to='/DashBoard' className={style.header__link}>Вакансии</Link>
+            <Link to='/DashBoard' className={style.header__link}>Заявки на продавца</Link>
 
           </nav>
           <nav>{props}</nav>

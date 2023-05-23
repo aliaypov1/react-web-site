@@ -10,8 +10,22 @@ const Course = () => {
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
     const [sortByPrice, setSortByPrice] = useState(null);
+    const [sellerId, setSellerId] = useState([])
 
     const [searchValue, setSearchValue] = useState('');
+    useEffect(()=>{
+        
+        const getSeller =async()=>{
+            const resp = await axios(`http://frez773-001-site1.atempurl.com/api/Auth/GetCurrentUser`,{
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+            console.log(resp)
+            setSellerId(resp.data.sellerId)
+        }
+        getSeller()
+    },[])
     useEffect(() => {
 
         const getData = async () => {
@@ -91,6 +105,7 @@ const Course = () => {
         console.log('click ', e);
         setCurrent(e.key);
     };
+  
     return (
         <div>
             <Header props={<Search
@@ -132,8 +147,8 @@ const Course = () => {
                 (
 
                     <div className="container" key={item.id}>
-                        <Card title={item.title} style={{ marginBottom: '30px' }}>
-                            <p style={{textAlign:'right',margin:'8px',}}><Link to={`/Course/${item.id}/${item.title}`}  style={{color:"blue"}}>деталии</Link></p>
+                        <Card title={item.title} style={{ marginBottom: '30px' }} extra={sellerId === item.sellerId ? <Link to={`/ChangeCourse/${item.id}/${item.title}`}>Коректировать</Link>:<></>}>
+                            <p style={{textAlign:'right',margin:'8px',}}><Link to={`/Course/${item.id}/${item.title}`}  style={{color:"blue"}}>деталии</Link> </p>
                             <Card type="inner" title={item.description} extra={<a> приобрести за  <span style={{ color: 'green' }}>{item.price}s</span></a>}>
                                 <div className="" style={{ background: 'rgb(173, 215, 20)', width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "20px" }}><Buy name={item.title} id={item.id} /></div>
                             </Card>
