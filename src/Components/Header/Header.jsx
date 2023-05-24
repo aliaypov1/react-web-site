@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { accessToken } from '../Token/Token';
 import HeaderNavigate from './HeaderNavigate';
 import { UserOutlined } from '@ant-design/icons';
+import Message from '../UI/Modals/Message';
 const Header = ({props}) => {
 
   const logout = () => {
@@ -22,9 +23,9 @@ const Header = ({props}) => {
 
             <a href='http://localhost:3000/About'  className={style.header__logo}>Home</a>
             <Link to='/' className={style.header__link}>О нас</Link>
-            <Link to='/Course' className={style.header__link}>Курсы</Link>
+            <Link to='/Course' className={style.header__link}><Message props='вы перешли на страницу курсов' Children='курсы'></Message></Link>
             <a href="#" className={style.header__link}>Контакты</a>
-            <Link to='/DashBoard' className={style.header__link}>Заявки на продавца</Link>
+            <Link to='/DashBoard' className={style.header__link}><Message props='Добро пожаловать продавец' Children='Заявки на продавца'/></Link>
 
           </nav>
           <nav>{props}</nav>

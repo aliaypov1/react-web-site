@@ -7,7 +7,6 @@ import Header from '../Header/Header';
 const RegisterForm = ({value,setValue,createUser,loading}) => {
     return (
         <>
-        <Header/>
         <div className={style.container} >
         <form type='Submit' style={{background:'white',padding:'70px',borderRadius:'5px',WebkitBoxShadow:'22px 29px 25px 4px rgba(34, 60, 80, 0.2)'}} className={style.inputs}>
             <label htmlFor="">

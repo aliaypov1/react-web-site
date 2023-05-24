@@ -10,8 +10,8 @@ const Content = () => {
             <section className={style.about}>
                
                 <div className="container">
-                    <h1 className={style.about__title}>Поступайте за границу <br /> с UniPage</h1>
-                    <p className={style.about__text}>Ваш эксперт по образованию за рубежом</p>
+                    <h1 className={style.about__title}>Подберем для вас <br />подходящий курс</h1>
+                    <p className={style.about__text}>Лучшие курсы Кыргызыстана спциально собраны <br /> для вас</p>
                     <div className={style.buttons}>
                         <button>Бесплатная консультация</button>
                         <button>Об услугах</button>

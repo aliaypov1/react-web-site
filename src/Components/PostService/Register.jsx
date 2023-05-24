@@ -28,6 +28,7 @@ const Register = () => {
     }
     return (
         <>
+        <Header/>
            <RegisterForm value={value} setValue={setValue} createUser={createUser} loading={loading} /> 
         </>
     );

@@ -13,10 +13,10 @@ const Course = () => {
     const [sellerId, setSellerId] = useState([])
 
     const [searchValue, setSearchValue] = useState('');
-    useEffect(()=>{
-        
-        const getSeller =async()=>{
-            const resp = await axios(`http://frez773-001-site1.atempurl.com/api/Auth/GetCurrentUser`,{
+    useEffect(() => {
+
+        const getSeller = async () => {
+            const resp = await axios(`http://frez773-001-site1.atempurl.com/api/Auth/GetCurrentUser`, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -25,14 +25,14 @@ const Course = () => {
             setSellerId(resp.data.sellerId)
         }
         getSeller()
-    },[])
+    }, [])
     useEffect(() => {
 
         const getData = async () => {
             setLoading(true)
             const resp = await axios(
                 'http://frez773-001-site1.atempurl.com/api/Course/courses',
-        
+
                 {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
@@ -105,7 +105,7 @@ const Course = () => {
         console.log('click ', e);
         setCurrent(e.key);
     };
-  
+
     return (
         <div>
             <Header props={<Search
@@ -119,11 +119,11 @@ const Course = () => {
             <section className={style.about}>
 
                 <div className="container">
-                    <h1 className={style.about__title}>Поступайте за границу <br /> с UniPage</h1>
-                    <p className={style.about__text}>Ваш эксперт по образованию за рубежом</p>
+                    <h1 className={style.about__title}>Подберем для вас <br /> подходящий курс</h1>
+                    <p className={style.about__text}>Лучшие курсы Кыргызыстана спциально собраны <br /> для вас</p>
                     <div className={style.buttons}>
 
-                        <Link  className={style.about__text} style={{ background: 'rgb(173, 215, 20)', padding: '10px', borderRadius: '9px' }}></Link>
+                        {/* <Link className={style.about__text} style={{ background: 'rgb(173, 215, 20)', padding: '10px', borderRadius: '9px' }}></Link> */}
                     </div>
                     <div className={style.about__wrapper}>
                         <a href="#" className={style.wrapper__title}><p className={style.wrapper__text} >2023+</p> год основания</a>
@@ -133,35 +133,36 @@ const Course = () => {
                     </div>
                 </div>
             </section>
-            <div  className='container'>
+            <div className='container'>
                 <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
             </div>
+            {loading ? <p>dada</p>:''}
+            <div className="container" style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:'20px'}}>
+                {loading ?
+                    <div className="container">
+                        <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                        <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                        <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                    </div> :
+                    sortedAndFilteredCourses.length > 0 ? sortedAndFilteredCourses.map((item) =>
+                    (
 
-            {loading ?
-                <div className="container">
-                    <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
-                    <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
-                    <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
-                </div> :
-                sortedAndFilteredCourses.length > 0 ? sortedAndFilteredCourses.map((item) =>
-                (
 
-                    <div className="container" key={item.id}>
-                        <Card title={item.title} style={{ marginBottom: '30px' }} extra={sellerId === item.sellerId ? <Link to={`/ChangeCourse/${item.id}/${item.title}`}>Коректировать</Link>:<></>}>
-                            <p style={{textAlign:'right',margin:'8px',}}><Link to={`/Course/${item.id}/${item.title}`}  style={{color:"blue"}}>деталии</Link> </p>
+                        <Card key={item.id} title={item.title} style={{ marginBottom: '30px', width:'400px' }} extra={sellerId === item.sellerId ? <Link to={`/ChangeCourse/${item.id}/${item.title}`}>Коректировать</Link> : <></>}>
+                            <p style={{ textAlign: 'right', margin: '8px', }}><Link to={`/Course/${item.id}/${item.title}`} style={{ color: "blue" }}>деталии</Link> </p>
                             <Card type="inner" title={item.description} extra={<a> приобрести за  <span style={{ color: 'green' }}>{item.price}s</span></a>}>
                                 <div className="" style={{ background: 'rgb(173, 215, 20)', width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "20px" }}><Buy name={item.title} id={item.id} /></div>
                             </Card>
                         </Card>
-                    </div>
-                )
-                )
-                    :
-                    <p style={{ color: 'black', fontSize: '60px', textAlign: 'center', padding: '50px', height: '100vh' }}>нечего не найденно</p>
 
-            }
+                    )
+                    )
+                        :
+                        <p style={{ color: 'black', fontSize: '60px', textAlign: 'center', padding: '50px', height: '100vh' }}>нечего не найденно</p>
 
+                }
 
+            </div>
         </div>
     );
 };

@@ -54,27 +54,31 @@ const MyCourse = () => {
             <Header />
             <ProfileNavigate />
             <div className="container" style={{ padding: '120px 0', color: 'black' }}>
+            <div className="container" style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:'20px'}}  >
                 {loading ? <div className='container'>
                     <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
                     <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
                     <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
                 </div>
                     :
+                  
                     result.map((item) =>
                     (
     
-                        <div className="container" key={item.id}>
-                            <Card title={item.title} style={{ marginBottom: '30px' }}>
+                        
+                            <Card key={item.id} title={item.title} style={{ marginBottom: '30px', width:"400px" }}>
                                 <Card type="inner" title={item.description} extra={<DeleteMyCourse onCourseDeleted={handleCourseDeleted} courseId={item.id}/>}>
                                     <div className="" style={{  width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "18px" }}></div>
                                 </Card>
                             </Card>
-                        </div>
+                       
                     )
                     )
+                    
     
                 }
-
+                
+                </div>
             </div>
         </div>
     );

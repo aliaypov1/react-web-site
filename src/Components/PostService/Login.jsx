@@ -4,6 +4,7 @@ import LoginForm from '../Forms/LoginForm';
 import { BASE_URL } from '../BASE_URL/BASE_URL.js';
 import DangerAlert from '../UI/Alerts/DangerAlert';
 import { Link } from 'react-router-dom';
+import Header from '../Header/Header';
 
 const Login = () => {
     const [inputValue, setInputValue] = useState({
@@ -39,10 +40,10 @@ const Login = () => {
     console.log(counter)
     return (
         <>
-        
+        <Header/>
             <DangerAlert open={alert} />
-            {counter >= 3? <Link to='/ForgotPassword' style={{textAlign:'center',color:'red'}}>забыли пароль</Link>:''}
-            <LoginForm inputValue={inputValue} setInputValue={setInputValue} login={login} loading={loading} />
+            {/* {counter >= 3? <Link to='/ForgotPassword' style={{textAlign:'center',color:'red'}}>забыли пароль</Link>:''} */}
+            <LoginForm inputValue={inputValue} setInputValue={setInputValue} login={login} loading={loading} props={counter >= 3? <Link to='/ForgotPassword' style={{textAlign:'center',color:'red'}}>забыли пароль</Link>:''} />
         </>
     );
 };

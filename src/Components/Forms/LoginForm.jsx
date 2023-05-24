@@ -5,8 +5,7 @@ import style from './Form.module.css'
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 
-const LoginForm = ({ inputValue, setInputValue, login, loading }) => {
-
+const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
   const [rememberMe, setRemamberMe] = useState(false)
   const [checked, setChecked] = useState(false);
   const [checkeds, setCheckeds] = useState(false);
@@ -20,10 +19,10 @@ const LoginForm = ({ inputValue, setInputValue, login, loading }) => {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
   };
-
+ 
   return (
     <>
-      <Header />
+     
       <div className={style.container}>
         <Form
           name="normal_login"
@@ -64,6 +63,7 @@ const LoginForm = ({ inputValue, setInputValue, login, loading }) => {
               onChange={e => setInputValue({ ...inputValue, password: e.target.value })} />
 
           </Form.Item>
+         
           <Form.Item>
             {loading ? <div className="loader"></div> : ''}
             <input
@@ -84,6 +84,8 @@ const LoginForm = ({ inputValue, setInputValue, login, loading }) => {
               name='valid'
             />
             <label>Я не робот</label>
+            <br />
+            {props}
 
 
 
