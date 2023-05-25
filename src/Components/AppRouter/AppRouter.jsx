@@ -47,7 +47,7 @@ const AppRouter = () => {
                         <Route path='/Course/:id/:title' element={<CourseDetails/>}/>
                         <Route path='/ProfileSearch/:id/:studentId/:userName' element={<ProfileSearch/>}/>
                         <Route path='/NotReviewed' element={<NotRevievid/>}/>
-                        <Route path='/ChangeCourse/:id/:title' element={<ChangeCourse/>}/>
+                        <Route path='/ChangeCourse/:id' element={<ChangeCourse/>}/>
                         <Route
                             path="*"
                             element={<Navigate to="/NotFound" replace />}

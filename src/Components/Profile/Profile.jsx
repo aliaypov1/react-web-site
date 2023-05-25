@@ -4,6 +4,7 @@ import { BASE_URL } from '../BASE_URL/BASE_URL';
 import Header from '../Header/Header';
 import style from './Profile.module.css'
 import ProfileNavigate from '../Header/ProfileHeader';
+import profileImg from '../img/profile.jpg'
 
 
 const Profile = () => {
@@ -34,18 +35,22 @@ const Profile = () => {
         <div className="">
             <Header />
             <ProfileNavigate/>
+            <img src={profileImg} style={{height:'200px'}} alt="" />
             <div className={style.container}>
-                {loading ? <div className="loader"></div> : profile && (
+                
                     <div className={style.content}>
-                        <a className={style.img}><img src="https://i.pinimg.com/originals/ff/a0/9a/ffa09aec412db3f54deadf1b3781de2a.png" width='10px' alt=""   /></a>
-                      
+                    {loading ? <div className="loader"></div> : profile && (
                         <div className="">
-                        <p> {profile.userName}</p>
-                        <p> {profile.email}</p>
-                        <p> {profile.roles}</p>
+                        <p style={{color:'black',fontSize:'50px',marginBottom:'40px'}}> {profile.userName}</p>
+                        <button style={{background:'#85233E',color:'white',padding:'20px 40px',borderRadius:'7px'}}>Редактировать профиль</button>
+                        <p style={{color:"black",fontSize:'20px',marginTop:'30px'}}>Hi! We are Humans, we are building the future of work. We are trying to reinvent the way to <br /> discover jobs in web3. In a few weeks, we will launch a whole new way of referring great people <br /> to great jobs. For humans, by Humans. Launching on June, 15.</p>
+                        <p style={{color:"black",fontSize:'20px',marginTop:'30px'}}>Сфера деятельности: UX/UI  дизайн, Графический дизайн</p>
+                        <p style={{color:"black",fontSize:'20px',marginTop:'30px'}}>Город: Бишкек</p>
+                        <p style={{color:"black",fontSize:'20px',marginTop:'30px'}}>Образование: Высшее экономическое, UX/UI дизайнер курсы</p>
                         </div>
-                    </div>
+                    
                 )}
+                </div>
             </div>
 
         </div>

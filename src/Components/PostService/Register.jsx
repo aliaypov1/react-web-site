@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import { BASE_URL } from '../BASE_URL/BASE_URL';
 import RegisterForm from '../Forms/RegisterForm';
 import Header from '../Header/Header';
+import DangerAlert from '../UI/Alerts/DangerAlert';
 
 const Register = () => {
     const [loading, setLoading] = useState(false)
+    const [alert, setAlert] = useState(false)
     const [value,setValue] = useState({
         email:'',
         password:'',
@@ -23,12 +25,15 @@ const Register = () => {
         }catch(e){
             console.log(e)
             setLoading(false)
+            setAlert(true)
         }
         setLoading(false)
+        
     }
     return (
         <>
         <Header/>
+        <DangerAlert open={alert}/>
            <RegisterForm value={value} setValue={setValue} createUser={createUser} loading={loading} /> 
         </>
     );

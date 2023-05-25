@@ -4,13 +4,19 @@ import Header from '../Header/Header';
 import axios from 'axios';
 
 const CreateCourse = () => {
-    const [isFree, setIsFree] = useState(false)
+    const [isFree, setIsFree] = useState(true)
     const [value, setValue] = useState({
         title: '',
         description: '',
         isFree: isFree,
         price: 0
     })
+    const handleClick = () => {
+      setValue(prevState => ({
+        ...prevState,
+        isFree: !prevState.isFree
+      }));
+    };
     console.log(value)
     const createCourse = async()=>{
         try {
@@ -27,7 +33,8 @@ const CreateCourse = () => {
     }
     return (
         <div>
-            <CreateCourseForm value={value} setValue={setValue} start={createCourse}/>
+            <CreateCourseForm value={value} isFree={value.isFree} handleClick={handleClick} setValue={setValue} start={createCourse}/>
+            
         </div>
     );
 };

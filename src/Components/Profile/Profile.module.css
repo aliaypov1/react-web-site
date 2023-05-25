@@ -1,18 +1,9 @@
 .container{
-    max-width: 660px;
-    margin: 0 auto;
-    padding: 40px;
-    color: rgba(21, 21, 232, 0.37);
-    font-size: 22px;
-    margin-top: 80px;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: antiquewhite;
-    -Webkit-box-shadow:22px 29px 25px 4px rgba(34, 60, 80, 0.2);
+   
+ border-radius: 27px;
+ transform: translateY(-100px);
+ background-color: aliceblue;
+
 }
 .container:hover{
     opacity: .9;
@@ -20,17 +11,12 @@
 }
 
 
-img{
-    border-radius: 1000px;
-    height: 200px;
-    width: 200px;
-    margin-bottom: 20px;
-
-}
 .content{
-    display: grid;
-    grid-template-columns:1fr 1fr;
-    text-align: start; 
-    column-gap: 130px;
+ max-width: 1300px;
+ margin: 0 auto;
+ padding: 40px;
+ font-size: 22px;
+ margin-top: 80px;
+ border-radius: 15px;
 
 }

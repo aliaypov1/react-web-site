@@ -5,7 +5,7 @@ const onFinish = (values) => {
 const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
-const CreateCourseForm = ({value, setValue,start}) => (
+const CreateCourseForm = ({value, setValue,start,isFree,handleClick}) => (
   <Form
     name="basic"
     labelCol={{
@@ -51,19 +51,26 @@ const CreateCourseForm = ({value, setValue,start}) => (
     >
       <Input />
     </Form.Item>
-    <Form.Item
-      label="price"
-      name="price"
-      onChange={e => setValue({...value, price:e.target.value})}
-      rules={[
-        {
-          required: true,
-          message: 'Please input your price!',
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
+    {isFree ?
+    
+  
+  <p></p>
+  :
+  <Form.Item
+    label="price"
+    name="price"
+    onChange={e => setValue({...value, price:e.target.value})}
+    rules={[
+      {
+        required: true,
+        message: 'Please input your price!',
+      },
+    ]}
+  >
+    <Input />
+  </Form.Item>
+  }
+    
 
     <Form.Item
       name="remember"
@@ -84,6 +91,9 @@ const CreateCourseForm = ({value, setValue,start}) => (
     >
       <Button  htmlType="submit" onClick={start}>
         опубликовать
+      </Button>
+      <Button  htmlType="submit" onClick={handleClick}>
+      {isFree ? <p>Бесплатный</p>:<p>Платный</p>}
       </Button>
     </Form.Item>
   </Form>

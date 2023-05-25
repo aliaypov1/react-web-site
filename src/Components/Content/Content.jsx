@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from '../Header/Header';
 import style from './Content.module.css'
-import ash from '../img/ash.jpg'
 
 const Content = () => {
     return (
