@@ -4,6 +4,8 @@ import { Button, Form, Input } from 'antd';
 import style from './Form.module.css'
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
+import regImg from '../img/png.png'
+import ErrorMessage from '../UI/Message/ErrorMessage';
 
 const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
   const [rememberMe, setRemamberMe] = useState(false)
@@ -23,15 +25,17 @@ const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
   return (
     <>
      
-      <div className={style.container}>
+      <div className={style.autorization__container}>
         <Form
           name="normal_login"
           initialValues={{
             remember: true,
           }}
           onFinish={onFinish}
-          style={{background:'white',padding:'70px',borderRadius:'5px',WebkitBoxShadow:'22px 29px 25px 4px rgba(34, 60, 80, 0.2)'}}
-        >
+          style={{background:'#F6F6F6',padding:'70px',display:'flex',flexDirection:'column',justifyContent:'center'}}
+      >
+           <h1 style={{color:'black',fontSize:'62px',fontWeight:'700'}}>Войдите</h1>
+            <p style={{color:'black',fontSize:'30px',marginBottom:'50px',fontWeight:'700'}}>В свой аккаунт</p>
           <Form.Item
             name="username"
             rules={[
@@ -66,15 +70,7 @@ const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
          
           <Form.Item>
             {loading ? <div className="loader"></div> : ''}
-            <input
-              style={{ marginRight: "10px" }}
-              type="checkbox"
-              checked={checkeds}
-              onChange={handleCheckboxChangee}
-              onClick={() => setValid(prev => !prev)}
-              name='remember'
-            />
-            <label style={{ marginRight: '20px' }}>rememberMy</label>
+            
             <input
               style={{ marginRight: "10px" }}
               type="checkbox"
@@ -93,14 +89,19 @@ const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
 
           <Form.Item>
 
-            <Button disabled={!rememberMe} htmlType="submit" style={{ marginRight: '20px' }} onClick={() => login()}>
-              Log in
+            <Button disabled={!rememberMe} htmlType="submit" style={{ width:'100%', background:'#85233E',color:'white' }} onClick={() => login()}>
+            Войти
             </Button>
 
-            <Link to='/Register'>Or register now!</Link>
+          
           </Form.Item>
+          <Link to='/Register'>Нет аккаунта? Зарегестрируйтесь!</Link>
         </Form>
         {/* <div className="img"><img src="https://cdn-icons-png.flaticon.com/512/3456/3456388.png" alt="" /></div> */}
+     
+        <div className={style.img}>
+            <img src={regImg} alt="" />
+        </div>
       </div>
     </>
   );

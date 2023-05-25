@@ -7,7 +7,7 @@ import { Card } from 'antd';
 import Approve from '../Sellercreate/Approve';
 import Reject from '../Sellercreate/Reject';
 const Details = () => {
-    const {id} = useParams()
+    const { id } = useParams()
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
     const gridStyle = {
@@ -37,22 +37,19 @@ const Details = () => {
             <div className={style.container}>
                 <div style={{ color: "#000" }} className={style.modal}>
                     {result ? <>
-                        <Card title={result.companyName}>
-    <Link to='/DashBoard' style={gridStyle}>вернуться назад</Link>
-    <Card.Grid style={gridStyle}>{result.id}</Card.Grid>
-    <Card.Grid style={gridStyle}>{result.firstName}</Card.Grid>
-    <Card.Grid hoverable={false} style={gridStyle}>
-    {result.lastName}
-    </Card.Grid>
-    <Card.Grid style={gridStyle}>{result.companyName}</Card.Grid>
-    <Card.Grid style={gridStyle}>{result.companyDescription}</Card.Grid>
-    <Card.Grid style={gridStyle}>{result.email ? result.email : <p>пусто</p>}</Card.Grid>
-    <Card.Grid style={gridStyle}>{result.phone}</Card.Grid>
+                        <Card style={{width:'800px',display:'flex',flexDirection:'column',textAlign:"start",fontSize:'23px',}} title={result.companyName}>
+                            {/* <Link to='/DashBoard' style={gridStyle}>вернуться назад</Link> */}
+                            <p> имя : {result.firstName}</p>
+                            <p hoverable={false} >фамилия : {result.lastName}</p>
+                            <p>Компания : {result.companyName}</p>
+                            <p>О компании :{result.companyDescription}</p>
+                            <p>почта : {result.email ? result.email : 'пусто'}</p>
+                            <p>телефон : {result.phone}</p>
 
-    <Card.Grid style={{display:'flex', columnGap:"20px"}}><Approve id={result.id}/> / <Reject id={result.id}/></Card.Grid>
-  </Card>
-                        
-                        </> : "ниче нет"}
+                            <p style={{ display: 'flex', columnGap: "20px" }}><Approve id={result.id} /> / <Reject id={result.id} /></p>
+                        </Card>
+
+                    </> : "ниче нет"}
 
                 </div>
             </div>

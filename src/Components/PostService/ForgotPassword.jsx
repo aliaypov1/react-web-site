@@ -4,6 +4,7 @@ import { BASE_URL } from '../BASE_URL/BASE_URL';
 import ForgotPasswordForm from '../Forms/ForgotPasswordForm';
 import SuccessAlert from '../UI/Alerts/SuccessAlert';
 import DangerAlert from '../UI/Alerts/DangerAlert';
+import { message } from 'antd';
 
 const ForgotPassword = () => {
     const [dangerAlert, setDangerAlert] = useState(false)
@@ -18,20 +19,22 @@ const ForgotPassword = () => {
             const res = await axios.post(`${BASE_URL}ForgotPassword`, { ...value })
             console.log(res)
             if (res.data.statusCode == 200) {
-                setSuccessAlert(true)
-                setDangerAlert(false)
-            } else {
-                setDangerAlert(true)
-                setSuccessAlert(false)
+                message.success('Пароль успешно отправлен на почту')
             }
-        } catch (e) {
-            setDangerAlert(true)
-            setSuccessAlert(false)
+            else{
+                
+                message.error(res.data.message)
+            }
+        } catch (error) {
+            if (error)  {
+                message.error(error.response.data.message)
+            }
+            
+        setLoading(false)
         }
         setLoading(false)
 
     }
-    if(loading) return <p>Loading...</p>
     return (
         <div>
             <SuccessAlert open={successAlert} />

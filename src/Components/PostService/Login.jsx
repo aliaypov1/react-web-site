@@ -5,13 +5,15 @@ import { BASE_URL } from '../BASE_URL/BASE_URL.js';
 import DangerAlert from '../UI/Alerts/DangerAlert';
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
+import ErrorMessage from '../UI/Message/ErrorMessage';
+import { message } from 'antd';
 
 const Login = () => {
     const [inputValue, setInputValue] = useState({
         userName: '',
         password: ''
     })
-    const [counter, setCounter] = useState(0)
+    const [counter, setCounter] = useState(3)
     const [alert, setAlert] = useState(false)
     const [loading, setLoading] = useState(false)
     const login = async () => {
@@ -26,18 +28,18 @@ const Login = () => {
             }
            
             
-        } catch(e){
-            setAlert(true)
-            incrimentCounter()
+        } catch(error){
+            if (error)  {
+                message.error(error.response.data.message)
+            }
+            
+        setLoading(false)
         }
         setLoading(false)
         
     }
-    const incrimentCounter =()=>{
-        setCounter(counter + 1)
-    }
     
-    console.log(counter)
+   
     return (
         <>
         <Header/>

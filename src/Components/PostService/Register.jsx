@@ -4,6 +4,7 @@ import { BASE_URL } from '../BASE_URL/BASE_URL';
 import RegisterForm from '../Forms/RegisterForm';
 import Header from '../Header/Header';
 import DangerAlert from '../UI/Alerts/DangerAlert';
+import { message } from 'antd';
 
 const Register = () => {
     const [loading, setLoading] = useState(false)
@@ -22,10 +23,11 @@ const Register = () => {
         if(res.data.statusCode === 200){
             window.location.href ='http://localhost:3000/Login'
         }
-        }catch(e){
-            console.log(e)
+        }catch(error){
+            if (error)  {
+                message.error(error.response.data.message)
+            }
             setLoading(false)
-            setAlert(true)
         }
         setLoading(false)
         

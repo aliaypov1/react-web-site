@@ -137,7 +137,7 @@ const Course = () => {
                 <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
             </div>
             {loading ? <p>dada</p>:''}
-            <div className="container" style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:'20px'}}>
+            <div className="container" style={{display:'grid',gridTemplateColumns:'1fr 1fr ',gap:'20px'}}>
                 {loading ?
                     <div className="container">
                         <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
@@ -148,7 +148,7 @@ const Course = () => {
                     (
 
 
-                        <Card key={item.id} title={item.title} style={{ marginBottom: '30px', width:'400px' }} extra={sellerId === item.sellerId ? <Link to={`/ChangeCourse/${item.id}`}>Коректировать</Link> : <></>}>
+                        <Card key={item.id} title={item.title} style={{ marginBottom: '30px',  }} extra={sellerId === item.sellerId ? <Link to={`/ChangeCourse/${item.id}`}>Коректировать</Link> : <></>}>
                             <p style={{ textAlign: 'right', margin: '8px', }}><Link to={`/Course/${item.id}/${item.title}`} style={{ color: "blue" }}>деталии</Link> </p>
                             <Card type="inner" title={item.description} extra=''>
                                 <div className="" style={{background:'#85233E', width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "20px" }}><Buy name={item.title} id={item.id} children={item.isFree ? 'Бесплатно' : 'купить за '+item.price + 'сом'} /></div>

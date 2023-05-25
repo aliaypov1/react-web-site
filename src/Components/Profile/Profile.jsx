@@ -35,7 +35,7 @@ const Profile = () => {
         <div className="">
             <Header />
             <ProfileNavigate/>
-            <img src={profileImg} style={{height:'200px'}} alt="" />
+            <img src={profileImg} style={{height:'200px',width:'100%'}} alt="" />
             <div className={style.container}>
                 
                     <div className={style.content}>

@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import style from './Form.module.css'
 import { Input, Button } from 'antd';
 import Header from '../Header/Header';
-
+import regImg from '../img/png.png'
 const RegisterForm = ({value,setValue,createUser,loading}) => {
     return (
         <>
-        <div className={style.container} >
-        <form type='Submit' style={{background:'white',padding:'70px',borderRadius:'5px',WebkitBoxShadow:'22px 29px 25px 4px rgba(34, 60, 80, 0.2)'}} className={style.inputs}>
+        <div className={style.autorization__container} >
+        <form type='Submit' style={{background:'#F6F6F6',padding:'70px',display:'flex',flexDirection:'column',justifyContent:'center'}} className={style.inputs}>
+            <h1 style={{color:'black',fontSize:'62px',fontWeight:'700'}}>Регистрация</h1>
+            <p style={{color:'black',fontSize:'30px',fontWeight:'700'}}>Добро пожаловать!</p>
             <label htmlFor="">
                 <Input
                     style={{ width: '450px' }}
@@ -34,12 +36,14 @@ const RegisterForm = ({value,setValue,createUser,loading}) => {
             
             {loading ? <div className="loader"></div>:''}
             <Button
-                style={{ width: '450px' }}
-                onClick={e => e.preventDefault(e) & createUser(e)}>Submit</Button>
-                <Link to='/Login' style={{color:'blue'}} >Sign in</Link>
+                style={{ width: '450px',background:'#85233E',color:'white' }}
+                onClick={e => e.preventDefault(e) & createUser(e)}>Зарегестрироваться</Button>
+                <Link to='/Login' style={{color:'black'}} >Уже зарегистрированы? Войти</Link>
         </form>
       {/* <div className="img"><img src="https://cdn-icons-png.flaticon.com/512/3456/3456388.png" alt="" /></div> */}
-
+        <div className={style.img}>
+            <img src={regImg} alt="" />
+        </div>
     </div>
     </>
     );
