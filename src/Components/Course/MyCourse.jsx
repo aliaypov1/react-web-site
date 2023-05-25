@@ -62,7 +62,7 @@ const MyCourse = () => {
                 </div>
                     :
                   
-                    result.map((item) =>
+                   result.length > 0 ? result.map((item) =>
                     (
     
                         
@@ -74,7 +74,8 @@ const MyCourse = () => {
                        
                     )
                     )
-                    
+                    :
+                    <h1>У вас нету купленных курсов</h1>
     
                 }
                 
