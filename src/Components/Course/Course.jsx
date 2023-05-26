@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Card, Skeleton, Menu } from 'antd';
 import Buy from '../Forms/Buy';
 import Search from 'antd/es/transfer/search';
+import gImg from '../img/girl.png'
 const Course = () => {
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
@@ -118,25 +119,25 @@ const Course = () => {
             />} />
             <section className={style.about}>
 
-                <div className="container">
-                    <h1 className={style.about__title}>Подберем для вас <br /> подходящий курс</h1>
-                    <p className={style.about__text}>Лучшие курсы Кыргызыстана спциально собраны <br /> для вас</p>
-                    <div className={style.buttons}>
+            <div className={style.about__container}>
+                    <div className="">
+                        <h1 className={style.about__title}>Подберем для вас<br /> Подходящий курс</h1>
+                        <p className={style.about__text}>Лучшие курсы Кыргызыстана спциально  <br /> собраны для вас</p>
+                        <div className={style.buttons}>
+                            
+                        </div>
 
-                        {/* <Link className={style.about__text} style={{ background: 'rgb(173, 215, 20)', padding: '10px', borderRadius: '9px' }}></Link> */}
                     </div>
-                    <div className={style.about__wrapper}>
-                        <a href="#" className={style.wrapper__title}><p className={style.wrapper__text} >2023+</p> год основания</a>
-                        <a href="#" className={style.wrapper__title}><p className={style.wrapper__text}>4 000+</p> cтудентов</a>
-                        <a href="#" className={style.wrapper__title}><p className={style.wrapper__text}>5 000+</p> публикаций</a>
-                        <a href="#" className={style.wrapper__title}><p className={style.wrapper__text}>28 000+</p> университетов</a>
-                    </div>
+                    <div className={style.g__img}>
+                                <img src={gImg} alt="" />
+                            </div>
+
                 </div>
             </section>
             <div className='container'>
                 <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
             </div>
-            <div className="container" style={{display:'grid',gridTemplateColumns:'1fr 1fr ',gap:'20px'}}>
+            <div className="container" style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr ',gap:'20px'}}>
                 {loading ?
                     <div className="" style={{display:'grid',gridTemplateColumns:'1fr 1fr'}}>
                         <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
@@ -149,7 +150,7 @@ const Course = () => {
                     (
 
 
-                        <Card key={item.id} title={item.title} style={{ marginBottom: '18px',boxShadow: ' -1px -1px 5px 0px rgba(0,0,0,0.75)' }} extra={sellerId === item.sellerId ? <Link to={`/ChangeCourse/${item.id}`}>Коректировать</Link> : <></>}>
+                        <Card key={item.id} title={item.title} style={{ marginBottom: '18px',width:"400px",boxShadow: ' -1px -1px 5px 0px rgba(0,0,0,0.75)' }} extra={sellerId === item.sellerId ? <Link to={`/ChangeCourse/${item.id}`}>Коректировать</Link> : <></>}>
                             <p style={{ textAlign: 'right', margin: '8px', }}><Link to={`/Course/${item.id}/${item.title}`} style={{ color: "blue" }}>деталии</Link> </p>
                             <Card type="inner" title={item.description} extra=''>
                                 <div className="" style={{background:'#85233E', width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "20px" }}><Buy name={item.title} id={item.id} children={item.isFree ? 'Бесплатно' : 'купить за '+item.price + 'сом'} /></div>

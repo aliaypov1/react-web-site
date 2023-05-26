@@ -6,11 +6,13 @@ import style from './Profile.module.css'
 import ProfileNavigate from '../Header/ProfileHeader';
 import profileImg from '../img/profile.jpg'
 import ProfileUpDate from './ProfileUpDate';
+import Loader from '../UI/Loader/Loader';
 
 
 const Profile = () => {
     const [profile, setProfile] = useState([])
     const [loading, setLoading] = useState(false)
+    const [user, setUser] = useState([])
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -21,8 +23,6 @@ const Profile = () => {
                     }
                 })
                 setProfile(res.data)
-                console.log(res.data)
-                console.log(profile)
             } catch (e) {
                 setLoading(false)
             }
@@ -30,28 +30,59 @@ const Profile = () => {
         }
         fetchData()
     }, [])
-   
+    useEffect(() => {
+        const getProfile = async () => {
+            setLoading(true)
+            const res = await axios(`http://frez773-001-site1.atempurl.com/api/Profile/students/${localStorage.getItem('student')}/profile`, {
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+            setUser(res.data)
+            setLoading(false)
+        }
+        getProfile()
+    }, [])
+
 
     return (
         <div className="">
             <Header />
-            <ProfileNavigate/>
-            <img src={profileImg} style={{height:'200px',width:'100%'}} alt="" />
+            <ProfileNavigate />
+            <img src={profileImg} style={{ height: '200px', width: '100%' }} alt="" />
             <div className={style.container}>
-                
-                    <div className={style.content}>
-                    {loading ? <div className="loader"></div> : profile && (
+
+                <div className={style.content}>
+                    {loading ? (
+                        <Loader />
+                    ) : user ? (
                         <div className="">
-                        <p style={{color:'black',fontSize:'50px',marginBottom:'40px'}}> {profile.userName}</p>
-                        {/* <button style={{background:'#85233E',color:'white',padding:'20px 40px',borderRadius:'7px'}}>Редактировать профиль</button> */}
-                        <ProfileUpDate/>
-                        <p style={{color:"black",fontSize:'20px',marginTop:'30px'}}>Hi! We are Humans, we are building the future of work. We are trying to reinvent the way to <br /> discover jobs in web3. In a few weeks, we will launch a whole new way of referring great people <br /> to great jobs. For humans, by Humans. Launching on June, 15.</p>
-                        <p style={{color:"black",fontSize:'20px',marginTop:'30px'}}>Сфера деятельности: UX/UI  дизайн, Графический дизайн</p>
-                        <p style={{color:"black",fontSize:'20px',marginTop:'30px'}}>Город: Бишкек</p>
-                        <p style={{color:"black",fontSize:'20px',marginTop:'30px'}}>Образование: Высшее экономическое, UX/UI дизайнер курсы</p>
+                            <p style={{ color: 'black', fontSize: '50px', marginBottom: '40px' }}>
+
+                                {user.firstName ? user.firstName : profile.userName } {user.lastName}
+                            </p>
+                            <ProfileUpDate />
+                            
+                            {user.aboutMe ? user.aboutMe && (
+                                <p style={{ color: "black", fontSize: '27px', marginTop: '30px' }}>О себе: {user.aboutMe}</p>
+                            ) :
+                            <p style={{ color: "black", fontSize: '27px', marginTop: '30px' }}>О себе: пусто </p>
+                            }
+                            {user.city ? user.city&& (
+                                <p style={{ color: "black", fontSize: '27px', marginTop: '30px' }}>Страна: {user.city}</p>
+                            ) :
+                            <p style={{ color: "black", fontSize: '27px', marginTop: '30px' }}>Город: пусто </p>
+                            }
+                            {user.country ? user.country && (
+                                <p style={{ color: "black", fontSize: '27px', marginTop: '30px' }}>Страна: {user.country}</p>
+                            ) :
+                            <p style={{ color: "black", fontSize: '27px', marginTop: '30px' }}>Страна: пусто </p>
+                            }
+                            
                         </div>
-                    
-                )}
+                    ) : (
+                        <p style={{ textAlign: 'center', fontSize: '55px', marginTop: '80px' }}>Профиль пуст</p>
+                    )}
                 </div>
             </div>
 

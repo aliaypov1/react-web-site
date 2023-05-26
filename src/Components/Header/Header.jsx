@@ -21,7 +21,7 @@ const Header = ({props}) => {
         {accessToken ? (<>
           <nav>
 
-            <a href='http://localhost:3000/About'  className={style.header__logo}>Home</a>
+            {/* <a href='http://localhost:3000/About'  className={style.header__logo}>Home</a> */}
             <Link to='/' className={style.header__link}>О нас</Link>
             <Link to='/Course' className={style.header__link}><Message props='вы перешли на страницу курсов' Children='курсы'></Message></Link>
             <a href="#" className={style.header__link}>Контакты</a>

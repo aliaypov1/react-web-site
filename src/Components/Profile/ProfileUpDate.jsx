@@ -12,19 +12,25 @@ const ProfileUpDate = () => {
         firstName: "",
         lastName: ""
     })
-    const upDateProfile = async()=>{
-        try{
-            const res = await axios.put('http://frez773-001-site1.atempurl.com/api/Profile/profile/update',{...value},{
+    
+    const upDateProfile = async () => {
+        try {
+            const res = await axios.put('http://frez773-001-site1.atempurl.com/api/Profile/profile/update', { ...value }, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
                 }
             })
             console.log(res)
             message.success(res.data.message)
-        }catch(error){
+        } catch (error) {
             message.error(error.response.data.message)
         }
-       
+
+    }
+    const handleClick = () => {
+        return (
+            upDateProfile()
+        )
     }
     const showDrawer = () => {
         setOpen(true);
@@ -48,7 +54,7 @@ const ProfileUpDate = () => {
                 extra={
                     <Space>
                         <Button onClick={onClose}>Cancel</Button>
-                        <button onClick={upDateProfile} style={{ background: '#85233E', color: 'white', padding: '4.5px 40px', borderRadius: '7px' }}>
+                        <button onClick={handleClick} style={{ background: '#85233E', color: 'white', padding: '4.5px 40px', borderRadius: '7px' }}>
                             Обновить
                         </button>
                     </Space>
@@ -67,7 +73,7 @@ const ProfileUpDate = () => {
                                     },
                                 ]}
                             >
-                                <Input placeholder="Имя" onChange={e => setValue({...value, firstName:e.target.value})} />
+                                <Input placeholder="Имя" value={value.firstName} onChange={e => setValue({ ...value, firstName: e.target.value })} />
                             </Form.Item>
                         </Col>
                         <Col span={12}>
@@ -85,14 +91,15 @@ const ProfileUpDate = () => {
                                     style={{
                                         width: '100%',
                                     }}
-                                    onChange={e => setValue({...value, lastName:e.target.value})}
+                                    onChange={e => setValue({ ...value, lastName: e.target.value })}
                                     placeholder="Фамилия"
+                                    value={value.lastName}
                                 />
                             </Form.Item>
                         </Col>
                     </Row>
                     <Row gutter={16}>
-                    <Col span={12}>
+                        <Col span={12}>
                             <Form.Item
                                 name="city"
                                 label="Город"
@@ -107,8 +114,9 @@ const ProfileUpDate = () => {
                                     style={{
                                         width: '100%',
                                     }}
-                                    onChange={e => setValue({...value, city:e.target.value})}
+                                    onChange={e => setValue({ ...value, city: e.target.value })}
                                     placeholder="Город"
+                                    value={value.city}
                                 />
                             </Form.Item>
                         </Col>
@@ -127,12 +135,13 @@ const ProfileUpDate = () => {
                                     style={{
                                         width: '100%',
                                     }}
-                                    onChange={e => setValue({...value, country:e.target.value})}
+                                    onChange={e => setValue({ ...value, country: e.target.value })}
                                     placeholder="Страна"
+                                    value={value.country}
                                 />
                             </Form.Item>
                         </Col>
-                       
+
                     </Row>
                     <Row gutter={16}>
                         <Col span={24}>
@@ -146,7 +155,7 @@ const ProfileUpDate = () => {
                                     },
                                 ]}
                             >
-                                <Input.TextArea rows={4} placeholder="О себе" onChange={e => setValue({...value, aboutMe:e.target.value})} />
+                                <Input.TextArea rows={4}  placeholder="О себе" onChange={e => setValue({ ...value, aboutMe: e.target.value })} />
                             </Form.Item>
                         </Col>
                     </Row>

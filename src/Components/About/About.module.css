@@ -1,13 +1,30 @@
 .about {
     width: 100%;
-    padding: 220px 0;
-    background: url(https://germania.one/wp-content/uploads/2017/04/1.jpg)center/cover fixed;
+    padding: 90px 0 0 0;
+    background: url(https://top-fon.com/uploads/posts/2021-07/1626946498_7-p-fon-na-polovinu-krasnii-7.jpg)center/cover fixed;
     margin-bottom: 80px;
 }
 
 .about__title {
     color: #FFF;
     font-size: 45px;
+}
+.about__container{
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+}
+.g__img{
+    width: 420px;
+}
+.g__img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .about__text {

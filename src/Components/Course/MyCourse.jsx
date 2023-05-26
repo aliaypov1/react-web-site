@@ -34,6 +34,7 @@ const MyCourse = () => {
         if (!isFirstRequestComplete) {
           return;
         }
+        setLoading(true)
         const resp = await axios(`http://frez773-001-site1.atempurl.com/api/Course/students/${userID}/courses`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
@@ -42,6 +43,7 @@ const MyCourse = () => {
         console.log(resp);
         setResult(resp.data);
         console.log(result);
+        setLoading(false)
       };
       getData();
     }, [isFirstRequestComplete, userID]);
