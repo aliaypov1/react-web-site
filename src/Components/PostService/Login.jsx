@@ -23,11 +23,7 @@ const Login = () => {
             const res = await axios.post(`${BASE_URL}Login`, { ...inputValue })
             console.log(res.data)
             localStorage.setItem('accessToken',res.data.accessToken)
-            if(localStorage.getItem('accessToken')){
-                window.location.href='http://localhost:3000/About'
-            }
-           
-            
+                getUser()
         } catch(error){
             if (error)  {
                 message.error(error.response.data.message)
@@ -38,6 +34,18 @@ const Login = () => {
         setLoading(false)
         
     }
+    const getUser = async()=>{
+        const res =await axios('http://frez773-001-site1.atempurl.com/api/Auth/GetCurrentUser',{
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        console.log(res)
+        localStorage.setItem('student',res.data.studentId)
+        if(localStorage.getItem('accessToken') && localStorage.getItem('student')){
+        window.location.href='http://localhost:3000/About'
+        }
+    }
     
    
     return (
@@ -45,7 +53,7 @@ const Login = () => {
         <Header/>
             <DangerAlert open={alert} />
             {/* {counter >= 3? <Link to='/ForgotPassword' style={{textAlign:'center',color:'red'}}>забыли пароль</Link>:''} */}
-            <LoginForm inputValue={inputValue} setInputValue={setInputValue} login={login} loading={loading} props={counter >= 3? <Link to='/ForgotPassword' style={{textAlign:'center',color:'red'}}>забыли пароль</Link>:''} />
+            <LoginForm inputValue={inputValue} setInputValue={setInputValue} login={login} loading={loading} props={<Link to='/ForgotPassword' style={{textAlign:'center',color:'black'}}>забыли пароль</Link>} />
         </>
     );
 };

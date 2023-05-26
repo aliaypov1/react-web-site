@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import regImg from '../img/png.png'
 import ErrorMessage from '../UI/Message/ErrorMessage';
+import Loader from '../UI/Loader/Loader';
 
 const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
   const [rememberMe, setRemamberMe] = useState(false)
@@ -69,9 +70,12 @@ const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
           </Form.Item>
          
           <Form.Item>
-            {loading ? <div className="loader"></div> : ''}
+            {loading ? <Loader/> : ''}
             
-            <input
+           
+            <div style={{display:'flex',justifyContent:'space-between',padding:'20px 20px 0 0'}}>
+              <div className="">
+              <input
               style={{ marginRight: "10px" }}
               type="checkbox"
               checked={checked}
@@ -80,8 +84,11 @@ const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
               name='valid'
             />
             <label>Я не робот</label>
-            <br />
-            {props}
+              </div>
+           
+           {props}
+            </div>
+            
 
 
 
@@ -89,7 +96,7 @@ const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
 
           <Form.Item>
 
-            <Button disabled={!rememberMe} htmlType="submit" style={{ width:'100%', background:'#85233E',color:'white' }} onClick={() => login()}>
+            <Button disabled={!rememberMe} htmlType="submit" style={!rememberMe? {width:'100%', background:'gray',color:'white'} : {width:'100%', background:'#85233E',color:'white'} } onClick={() => login()}>
             Войти
             </Button>
 

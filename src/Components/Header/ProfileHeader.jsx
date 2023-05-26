@@ -41,6 +41,6 @@ const ProfileNavigate = () => {
     console.log('click ', e);
     setCurrent(e.key);
   };
-  return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
+  return <Menu style={{marginBottom:'20px'}} onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
 };
 export default ProfileNavigate;

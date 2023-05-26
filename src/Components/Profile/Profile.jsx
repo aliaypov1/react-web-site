@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import style from './Profile.module.css'
 import ProfileNavigate from '../Header/ProfileHeader';
 import profileImg from '../img/profile.jpg'
+import ProfileUpDate from './ProfileUpDate';
 
 
 const Profile = () => {
@@ -42,7 +43,8 @@ const Profile = () => {
                     {loading ? <div className="loader"></div> : profile && (
                         <div className="">
                         <p style={{color:'black',fontSize:'50px',marginBottom:'40px'}}> {profile.userName}</p>
-                        <button style={{background:'#85233E',color:'white',padding:'20px 40px',borderRadius:'7px'}}>Редактировать профиль</button>
+                        {/* <button style={{background:'#85233E',color:'white',padding:'20px 40px',borderRadius:'7px'}}>Редактировать профиль</button> */}
+                        <ProfileUpDate/>
                         <p style={{color:"black",fontSize:'20px',marginTop:'30px'}}>Hi! We are Humans, we are building the future of work. We are trying to reinvent the way to <br /> discover jobs in web3. In a few weeks, we will launch a whole new way of referring great people <br /> to great jobs. For humans, by Humans. Launching on June, 15.</p>
                         <p style={{color:"black",fontSize:'20px',marginTop:'30px'}}>Сфера деятельности: UX/UI  дизайн, Графический дизайн</p>
                         <p style={{color:"black",fontSize:'20px',marginTop:'30px'}}>Город: Бишкек</p>

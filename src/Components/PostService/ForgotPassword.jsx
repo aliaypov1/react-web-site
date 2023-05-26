@@ -39,7 +39,7 @@ const ForgotPassword = () => {
         <div>
             <SuccessAlert open={successAlert} />
             <DangerAlert open={dangerAlert} />
-            <ForgotPasswordForm value={value} setValue={setValue} forgotPassword={forgotPassword} />
+            <ForgotPasswordForm value={value} setValue={setValue} loading={loading} forgotPassword={forgotPassword} />
         </div>
     );
 };

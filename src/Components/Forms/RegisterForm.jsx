@@ -4,6 +4,7 @@ import style from './Form.module.css'
 import { Input, Button } from 'antd';
 import Header from '../Header/Header';
 import regImg from '../img/png.png'
+import Loader from '../UI/Loader/Loader';
 const RegisterForm = ({value,setValue,createUser,loading}) => {
     return (
         <>
@@ -34,7 +35,7 @@ const RegisterForm = ({value,setValue,createUser,loading}) => {
                     onChange={e => setValue({ ...value, userName: e.target.value })} />
             </label>
             
-            {loading ? <div className="loader"></div>:''}
+            {loading ? <Loader/>:''}
             <Button
                 style={{ width: '450px',background:'#85233E',color:'white' }}
                 onClick={e => e.preventDefault(e) & createUser(e)}>Зарегестрироваться</Button>
