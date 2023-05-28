@@ -2,7 +2,9 @@ import { Button, Form, Input } from 'antd';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import style from './Course.module.css'
+import ProfileCarousel from '../Profile/ProfileCarousel';
+import Header from '../Header/Header';
+import ProfileNavigate from '../Header/ProfileHeader';
 
 const ChangeCourse = () => {
     const {id} = useParams()
@@ -28,8 +30,10 @@ const ChangeCourse = () => {
         }));
       };
     return (
-        <div className={style.container}>
-            <Form style={{background:'white',padding:'70px',borderRadius:'5px',WebkitBoxShadow:'22px 29px 25px 4px rgba(34, 60, 80, 0.2)'}}>
+        <div className=''>
+            <Header/>
+            <ProfileNavigate/>
+            <Form style={{padding:'70px',borderRadius:'5px',}}>
                 <Input placeholder='Title' style={{marginBottom:'20px'}} onChange={e => setValue({...value, Title:e.target.value})}/>
                 <Input placeholder='Description' style={{marginBottom:'20px'}} onChange={e => setValue({...value, Description:e.target.value})}/>
                {value.IsFree ? <p></p> :  <Input placeholder='price' style={{marginBottom:'20px'}} onChange={e => setValue({...value, Price:e.target.value})}/>}
@@ -37,6 +41,8 @@ const ChangeCourse = () => {
                 <Button onClick={handleClick}>{
                     value.IsFree ? <p>Бесплатно</p>:<p>платно</p>
                 }</Button>
+                
+            <ProfileCarousel courseId={id}/>
             </Form>
         </div>
     );

@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Header from '../Header/Header';
+import CoursePages from '../Pages/CoursePages';
 const { Meta } = Card;
 
 const CourseDetails = () => {
@@ -26,7 +27,9 @@ const CourseDetails = () => {
     return (
         <div>
             <Header/>
+            
             <Card title="Студенты этого Курса" style={{padding:'80px',margin:'50px'}}>
+             
            {result.length > 0 ?
            result.map((item)=>  
         <Card key={item.id}
@@ -46,7 +49,7 @@ const CourseDetails = () => {
            )
          :
          <p>нечего не найденно</p>}
-         
+          <CoursePages/>
          </Card>
         </div>
     );

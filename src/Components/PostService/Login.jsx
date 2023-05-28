@@ -41,9 +41,16 @@ const Login = () => {
             }
         })
         console.log(res)
+        if(res.data.isSeller){
+            localStorage.setItem('seller','seller')
+        }
         localStorage.setItem('student',res.data.studentId)
-        if(localStorage.getItem('accessToken') && localStorage.getItem('student')){
+        const roles = JSON.stringify(res.data.roles)
+            localStorage.setItem('role',roles)
+        if(localStorage.getItem('accessToken') && localStorage.getItem('student') && localStorage.getItem('role')){
         window.location.href='http://localhost:3000/About'
+        }else{
+            message.error('произошла ошибка попробуйте снова')
         }
     }
     

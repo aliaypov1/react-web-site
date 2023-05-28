@@ -2,6 +2,7 @@ import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/ico
 import { Menu } from 'antd';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { seller } from '../Token/Token';
 const items = [
   {
     label:  <Link to='/Profile'>Профиль</Link>,
@@ -22,6 +23,10 @@ const items = [
                 <Link to='/Security'>Безопасность</Link>
             ),
             key: 'setting:1',
+          },
+          {
+            label: seller ? <Link to='/ProfileSeller'>Продавец</Link>:'',
+            key: 'Продавец',
           },
          
         ],

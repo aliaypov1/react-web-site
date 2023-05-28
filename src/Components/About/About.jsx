@@ -6,25 +6,7 @@ import gImg from '../img/girl.png'
 
 
 const About = () => {
-    const [loading, setLoading] = useState(false)
-    const [result, setResult] = useState([])
-    useEffect(() => {
-        const getStatus = async () => {
-            setLoading(true)
-            const resp = await axios('http://frez773-001-site1.atempurl.com/api/SellerApplication/status', {
-
-                headers: {
-                    "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
-                }
-
-            })
-            console.log(resp)
-            setResult(resp.data.applicationStatus)
-            console.log(result)
-            setLoading(false)
-        }
-        getStatus()
-    }, [])
+   
 
     return (
         <>

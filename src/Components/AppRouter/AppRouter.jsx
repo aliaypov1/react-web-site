@@ -22,6 +22,8 @@ import ProfileSearch from "../Profile/ProfileSearch";
 import NotRevievid from "../Sellercreate/NotRevievid";
 import Security from "../Security/Security";
 import ChangeCourse from "../Course/ChangeCourse";
+import ProfileSeller from "../Profile/ProfileSeller";
+import PagesDetails from "../Pages/PagesDetails";
 
 const AppRouter = () => {
     return (
@@ -48,6 +50,8 @@ const AppRouter = () => {
                         <Route path='/ProfileSearch/:id/:studentId/:userName' element={<ProfileSearch/>}/>
                         <Route path='/NotReviewed' element={<NotRevievid/>}/>
                         <Route path='/ChangeCourse/:id' element={<ChangeCourse/>}/>
+                        <Route path='/ProfileSeller' element={<ProfileSeller/>}/>
+                        <Route path='/PageDetail/:id' element={<PagesDetails/>}/>
                         <Route
                             path="*"
                             element={<Navigate to="/NotFound" replace />}
