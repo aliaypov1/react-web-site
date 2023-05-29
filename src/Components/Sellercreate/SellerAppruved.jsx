@@ -1,17 +1,11 @@
-import { SmileOutlined } from '@ant-design/icons';
-import { Button, Result } from 'antd';
-import { Link } from 'react-router-dom';
+
 import CreateCourse from './CreateCourse';
-import Header from '../Header/Header';
-const SellerAppruved = () => (
+const SellerAppruved = ({open,close}) => {
+  if(!open) return null
+   return(
     <>
-    <Header/>
-  <Result
-    icon={<SmileOutlined />}
-    title="Размещайте свои курсы на нашей платформе"
-    extra={<Link to='/DashBoard' style={{color:'blue'}}>Создовать</Link>}
-  />
-  <CreateCourse/>
+  <CreateCourse close={close} />
   </>
-);
+   )
+  };
 export default SellerAppruved;

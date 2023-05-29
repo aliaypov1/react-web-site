@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import Header from '../Header/Header';
 import { Avatar, Card } from 'antd';
 import Item from 'antd/es/list/Item';
+import Loader from '../UI/Loader/Loader';
 const { Meta } = Card;
 
 const ProfileSearch = () => {
@@ -11,8 +12,10 @@ const ProfileSearch = () => {
     const { studentId } = useParams()
     const [result, setResult] = useState([])
     const [response, serResponse] = useState([])
+    const [loading, setLoading] = useState([])
     useEffect(() => {
         const getUser = async () => {
+             setLoading(true)
             const resp = await axios(`http://frez773-001-site1.atempurl.com/api/Auth/users/${id}`, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
@@ -20,11 +23,13 @@ const ProfileSearch = () => {
             })
             console.log(resp)
             setResult(resp.data)
+            setLoading(false)
         }
         getUser()
     }, [])
     useEffect(() => {
         const getData = async () => {
+            setLoading(true)
             const resp = await axios(`http://frez773-001-site1.atempurl.com/api/Course/students/${studentId}/courses`, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
@@ -32,6 +37,7 @@ const ProfileSearch = () => {
             })
             console.log(resp)
             serResponse(resp.data)
+            setLoading(false)
         }
         getData()
     }, [])
@@ -55,7 +61,9 @@ const ProfileSearch = () => {
                     </Card>
 
                 }
-                    <h1 style={{margin:"40px", fontSize:'29px',color:'blue'}}>Курсы данного пользователя</h1>
+                {loading ? <Loader/>:
+                <>
+                <h1 style={{margin:"40px", fontSize:'29px',color:'blue'}}>Курсы данного пользователя</h1>
                 {
                     response.length > 0 ? response.map((item) =>
 
@@ -68,7 +76,9 @@ const ProfileSearch = () => {
                     )
                         :
                         <p>пусто</p>
+                }</>
                 }
+                    
             </Card>
         </div>
     );

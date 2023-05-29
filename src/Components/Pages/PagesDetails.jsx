@@ -16,7 +16,7 @@ const PagesDetails = () => {
                 }
             })
             console.log(res)
-            setResult(res.data)
+            setResult(res.data.pageDTO)
         }
         getData()
     },[])

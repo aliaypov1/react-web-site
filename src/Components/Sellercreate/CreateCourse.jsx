@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import CreateCourseForm from '../Forms/CreateCourseForm';
-import Header from '../Header/Header';
 import axios from 'axios';
+import { message } from 'antd';
 
-const CreateCourse = () => {
+const CreateCourse = ({close}) => {
     const [isFree, setIsFree] = useState(true)
     const [value, setValue] = useState({
         title: '',
@@ -26,15 +26,14 @@ const CreateCourse = () => {
                 "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
               }
             });
-            console.log(resp.data);
+            message.success(resp.data.message)
           } catch (error) {
-            console.error(error);
+            message.error(error.response.message)
           }
     }
     return (
         <div>
-            <CreateCourseForm value={value} isFree={value.isFree} handleClick={handleClick} setValue={setValue} start={createCourse}/>
-            
+            <CreateCourseForm close={close} value={value} isFree={value.isFree} handleClick={handleClick} setValue={setValue} start={createCourse}/>
         </div>
     );
 };

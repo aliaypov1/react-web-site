@@ -90,6 +90,7 @@ import Header from '../Header/Header';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Card, Menu } from 'antd';
+import Loader from '../UI/Loader/Loader';
 
 const Dashboard = () => {
   const [result, setResult] = useState([]);
@@ -98,6 +99,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const getData = async () => {
+      setLoading(true)
       const res = await axios(`http://frez773-001-site1.atempurl.com/api/SellerApplication/get-all-applications`, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
@@ -106,6 +108,7 @@ const Dashboard = () => {
       console.log(res.data);
       setResult(res.data);
       console.log(result);
+      setLoading(false)
     };
     getData();
   }, []);
@@ -173,39 +176,21 @@ const onClick = (e) => {
   return (
     <div>
       <Header />
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <div
+      
+     
+      <div
           className="container"
           style={{ padding: '20px', marginTop: '80px', borderRadius: '16px', maxWidth: '1400px' }}
           
         >
-            <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
-          {/* <button
-            style={{ background: 'black', color: 'white', padding: '20px', margin: '20px' }}
-            onClick={() => handleSort(0)}
-          >
-            Сортировать по не просмотренным
-          </button>
-          <button
-            style={{ background: 'black', color: 'white', padding: '20px', margin: '20px' }}
-            onClick={() => handleSort(1)}
-          >
-            Сортировать по отказанным
-          </button>
-          <button
-            style={{ background: 'black', color: 'white', padding: '20px', margin: '20px' }}
-            onClick={() => handleSort(2)}
-          >
-            Сортировать по принятым
-          </button>
-          <button
-            style={{ background: 'black', color: 'white', padding: '20px', margin: '20px' }}
-            onClick={() => handleViewAll()}
-          >
-            показать все
-          </button> */}
+           {loading ? (
+        <Loader/>
+      ) : (
+        <div className="">
+            <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+            <br />
+            <br />
+        
           {filteredData.map((item) => (
             <div key={item.id}>
               <Card title={item.companyName} style={{ marginBottom: '30px' }}>
@@ -244,6 +229,7 @@ const onClick = (e) => {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 };

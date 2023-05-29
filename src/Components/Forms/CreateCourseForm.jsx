@@ -5,17 +5,15 @@ const onFinish = (values) => {
 const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
-const CreateCourseForm = ({value, setValue,start,isFree,handleClick}) => (
-  <Form
+const CreateCourseForm = ({value, setValue,start,isFree,handleClick,close}) => (
+  <div className="" style={{display:'flex',position:'fixed',justifyContent:'center',top:'0',left:"0",width:'100%',height:'100vh',alignItems:'center',background:'#0000004d'}}>
+    <Form
     name="basic"
-    labelCol={{
-      span: 8,
-    }}
-    wrapperCol={{
-      span: 16,
-    }}
     style={{
-      maxWidth: 600,
+      width: 400,
+      background:'white',
+      padding:'40px'
+
     }}
     initialValues={{
       remember: true,
@@ -25,9 +23,9 @@ const CreateCourseForm = ({value, setValue,start,isFree,handleClick}) => (
     autoComplete="off"
   >
     <Form.Item
-      label="title"
       name="title"
       onChange={e => setValue({...value, title:e.target.value})}
+      placeholder='Title'
       rules={[
         {
           required: true,
@@ -35,12 +33,13 @@ const CreateCourseForm = ({value, setValue,start,isFree,handleClick}) => (
         },
       ]}
     >
-      <Input />
+      <p style={{textAlign:'right',fontSize:'32px',marginBottom:'13px',color:'red'}} onClick={close}>x</p>
+      <Input  placeholder='Title'/>
     </Form.Item>
 
     <Form.Item
-      label="description"
       name="description"
+      placeholder='Description'
       onChange={e => setValue({...value, description:e.target.value})}
       rules={[
         {
@@ -49,7 +48,7 @@ const CreateCourseForm = ({value, setValue,start,isFree,handleClick}) => (
         },
       ]}
     >
-      <Input />
+      <Input  placeholder='Description'/>
     </Form.Item>
     {isFree ?
     
@@ -57,7 +56,6 @@ const CreateCourseForm = ({value, setValue,start,isFree,handleClick}) => (
   <p></p>
   :
   <Form.Item
-    label="price"
     name="price"
     onChange={e => setValue({...value, price:e.target.value})}
     rules={[
@@ -73,23 +71,18 @@ const CreateCourseForm = ({value, setValue,start,isFree,handleClick}) => (
     
 
     <Form.Item
-      name="remember"
       valuePropName="checked"
       wrapperCol={{
         offset: 8,
         span: 16,
       }}
     >
-      <Checkbox>Remember me</Checkbox>
     </Form.Item>
 
     <Form.Item
-      wrapperCol={{
-        offset: 8,
-        span: 16,
-      }}
+     
     >
-      <Button  htmlType="submit" onClick={start}>
+      <Button onClick={start}>
         опубликовать
       </Button>
       <Button  htmlType="submit" onClick={handleClick}>
@@ -97,5 +90,7 @@ const CreateCourseForm = ({value, setValue,start,isFree,handleClick}) => (
       </Button>
     </Form.Item>
   </Form>
+  </div>
+  
 );
 export default CreateCourseForm;

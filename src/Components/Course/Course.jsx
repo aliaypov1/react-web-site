@@ -3,18 +3,20 @@ import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import style from './Course.module.css'
 import { Link } from 'react-router-dom';
-import { Card, Skeleton, Menu } from 'antd';
+import { Card,  Menu } from 'antd';
 import Buy from '../Forms/Buy';
 import Search from 'antd/es/transfer/search';
 import gImg from '../img/girl.png'
 import { seller } from '../Token/Token';
+import Loader from '../UI/Loader/Loader';
+import CourseURL from './CourseURL';
+import SellerBuy from '../Forms/SellerBuy';
 const Course = () => {
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
     const [sortByPrice, setSortByPrice] = useState(null);
     const [sellerId, setSellerId] = useState([])
     const [status, setStatus] = useState([])
-
     const [searchValue, setSearchValue] = useState('');
     useEffect(() => {
 
@@ -120,6 +122,7 @@ const Course = () => {
         },
 
     ];
+   
     const [current, setCurrent] = useState('mail');
     const onClick = (e) => {
         console.log('click ', e);
@@ -128,6 +131,7 @@ const Course = () => {
 
     return (
         <div>
+
             <Header props={<Search
                 placeholder="input search text"
                 onChange={handleSearchChange}
@@ -136,6 +140,7 @@ const Course = () => {
                     width: 200,
                 }}
             />} />
+            
             <section className={style.about}>
 
                 <div className={style.about__container}>
@@ -158,17 +163,13 @@ const Course = () => {
                 </div>
             </section>
             <div className='container'>
+                 {/* <CourseURL/> */}
                 <Menu style={{ marginBottom: '40px' }} onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
             </div>
             <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr ', gap: '20px' }}>
                 {loading ?
-                    <div className="" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-                        <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
-                        <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
-                        <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
-                        <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
-                        <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
-                    </div> :
+                    <Loader/>
+                    :
                     sortedAndFilteredCourses.length > 0 ? sortedAndFilteredCourses.map((item) =>
                     (
 
@@ -176,8 +177,9 @@ const Course = () => {
                         <Card key={item.id} title={item.title} style={{ marginBottom: '18px', width: "400px", boxShadow: ' -1px -1px 5px 0px rgba(0,0,0,0.75)' }} extra=''>
                             <p style={{ textAlign: 'right', margin: '8px', }}><Link to={`/Course/${item.id}/${item.title}`} style={{ color: "blue" }}>деталии</Link> </p>
                             <Card type="inner" title={item.description} extra=''>
-                                <div className="" style={{ background: '#85233E', width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "20px" }}><Buy name={item.title} id={item.id} children={item.isFree ? 'Бесплатно' : 'купить за ' + item.price + 'сом'} /></div>
+                                <div className="" style={{ background: '#85233E', width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "20px" }}> {sellerId === item.sellerId ? <SellerBuy/> : <Buy name={item.title} id={item.id} children={item.isFree ? 'Бесплатно' : 'купить за ' + item.price + 'сом'} />}</div>
                             </Card>
+                           
                         </Card>
 
                     )

@@ -6,7 +6,7 @@ import NotFondPage from "../NotFoundPage/NotFondPage";
 import About from "../About/About";
 import Profile from "../Profile/Profile";
 import Content from "../Content/Content";
-import { accessToken } from "../Token/Token";
+import { accessToken, parsedRoles } from "../Token/Token";
 import Dashboard from "../Dashboard/Dashboard";
 import Sellercreatecurs from "../Sellercreate/Sellercreatecurs";
 import Status from "../Sellercreate/Status";
@@ -24,6 +24,7 @@ import Security from "../Security/Security";
 import ChangeCourse from "../Course/ChangeCourse";
 import ProfileSeller from "../Profile/ProfileSeller";
 import PagesDetails from "../Pages/PagesDetails";
+import Footer from "../Footer/Footer";
 
 const AppRouter = () => {
     return (
@@ -34,7 +35,8 @@ const AppRouter = () => {
                         <Route path='/About' element={<About />} />
                         <Route path='/Profile' element={<Profile />} />
                         <Route path='/NotFound' element={<NotFondPage children='Back to Home' navigate='/About' />} />
-                        <Route path='/DashBoard' element={<Dashboard/>}/>
+                        {parsedRoles.includes("Manager")?
+                        <Route path='/DashBoard' element={<Dashboard/>}/>:''}
                         <Route path='/' element={<Content/>} />
                         <Route path='/CreateCursSeller' element={<Sellercreatecurs/>}/>
                         <Route path='/Status' element={<Status/>}/>
@@ -57,6 +59,7 @@ const AppRouter = () => {
                             element={<Navigate to="/NotFound" replace />}
                         />
                     </Routes>
+                    {/* <Footer/> */}
                 </BrowserRouter> : <BrowserRouter>
                     <Routes>
                         <Route path='/Login' element={<Login />} />
@@ -70,6 +73,7 @@ const AppRouter = () => {
                             element={<Navigate to="/NotFound" replace />}
                         />
                     </Routes>
+                    {/* <Footer/> */}
                 </BrowserRouter>}
         </div>
     );

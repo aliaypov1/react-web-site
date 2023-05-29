@@ -2,16 +2,17 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import { Link } from 'react-router-dom';
-import { Card, Skeleton, Menu } from 'antd';
-import Buy from '../Forms/Buy';
+import { Card, Skeleton, Menu, Button } from 'antd';
 import Search from 'antd/es/transfer/search';
 import ProfileNavigate from '../Header/ProfileHeader';
 import CourseDelete from '../Course/CourseDelete';
+import SellerAppruved from '../Sellercreate/SellerAppruved';
 const ProfileSeller = () => {
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
     const [sortByPrice, setSortByPrice] = useState(null);
     const [sellerId, setSellerId] = useState([])
+    const [modal, setModal] = useState(false)
 
     const [searchValue, setSearchValue] = useState('');
     useEffect(() => {
@@ -124,6 +125,7 @@ const ProfileSeller = () => {
                 <Menu style={{marginBottom:"40px"}} onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
             </div>
             <div className="container" style={{gap:'20px'}}>
+                <Button style={{marginBottom:'20px'}} onClick={()=> setModal(true)}>Создать курс</Button>
                 {loading ?
                     <div className="" style={{}}>
                         <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
@@ -150,10 +152,10 @@ const ProfileSeller = () => {
                     )
                     )
                         :
-                        <p style={{ color: 'black', fontSize: '60px', textAlign: 'center', padding: '50px', height: '100vh' }}>нечего не найденно</p>
+                       ''
 
                 }
-
+                <SellerAppruved open={modal} close={()=>setModal(false)}/>
             </div>
         </div>
     );
