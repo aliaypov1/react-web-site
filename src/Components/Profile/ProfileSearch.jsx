@@ -63,7 +63,7 @@ const ProfileSearch = () => {
                 }
                 {loading ? <Loader/>:
                 <>
-                <h1 style={{margin:"40px", fontSize:'29px',color:'blue'}}>Курсы данного пользователя</h1>
+                <h1 style={{margin:"40px", fontSize:'29px',color:'black'}}>Курсы данного пользователя</h1>
                 {
                     response.length > 0 ? response.map((item) =>
 

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from '../UI/Loader/Loader';
+import { Image } from 'antd';
 
 const CourseURL = () => {
   const [imageUrl, setImageUrl] = useState('');
@@ -35,7 +36,7 @@ const CourseURL = () => {
   return (
     <div>
         {loading? <Loader/> :
-      <img src={imageUrl} width='100px' alt="Изображение" />
+      <Image src={imageUrl} width='100px' alt="Изображение" />
   }
     </div>
   );

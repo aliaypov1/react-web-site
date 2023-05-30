@@ -10,7 +10,7 @@ const CreateCourseForm = ({value, setValue,start,isFree,handleClick,close}) => (
     <Form
     name="basic"
     style={{
-      width: 400,
+      width: 900,
       background:'white',
       padding:'40px'
 

@@ -1,4 +1,4 @@
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -17,12 +17,18 @@ const ChangeCourse = () => {
     })
     console.log(value)
     const upData = async()=>{
-        const resp = await axios.put(`http://frez773-001-site1.atempurl.com/api/Course/courses/${id}?Title=${value.Title}&Description=${value.Description}&IsFree=${value.IsFree}&Price=${value.Price}`,{},{
+        try{
+        const resp = await axios.put(`http://frez773-001-site1.atempurl.com/api/Course/courses/${id}`,{...value},{
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
         console.log(resp)
+        message.success(resp.data.message)
+    }
+    catch(error){
+        message.error(error.response.message)
+    }
     }
     const handleClick = () => {
         setValue(prevState => ({

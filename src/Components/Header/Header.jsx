@@ -5,8 +5,9 @@ import { accessToken, parsedRoles } from '../Token/Token';
 import HeaderNavigate from './HeaderNavigate';
 import { UserOutlined } from '@ant-design/icons';
 import Message from '../UI/Modals/Message';
-const Header = ({props}) => {
-
+import { Button, notification } from 'antd';
+const Header = ({ props }) => {
+  const [api, contextHolder] = notification.useNotification();
   const logout = () => {
     localStorage.removeItem('accessToken')
     localStorage.removeItem('seller')
@@ -14,8 +15,18 @@ const Header = ({props}) => {
     localStorage.removeItem('student')
     window.location.href = 'http://localhost:3000/'
   }
-  
+
+  const openNotification = (placement) => {
+    api.info({
+      message: `Наши контакты`,
+      description:
+        '📱  WhatsApp - 996 707 707',
+        
+      placement,
+    });
+  };
   return (
+
     <header className={style.header}>
       <div className={style.container}>
 
@@ -23,16 +34,22 @@ const Header = ({props}) => {
           <nav>
             <Link to='/' className={style.header__link}>О нас</Link>
             <Link to='/Course' className={style.header__link}><Message props='вы перешли на страницу курсов' Children='курсы'></Message></Link>
-            <a href="#" className={style.header__link}>Контакты</a>
+            <a
+              className={style.header__link}
+              type=""
+              onClick={() => openNotification('bottomRight')}
+            >
+              Контакты
+            </a>
             {parsedRoles.includes('Manager') ?
-            <Link to='/DashBoard' className={style.header__link}><Message props='Добро пожаловать продавец' Children='Заявки на продавца'/></Link>
-        :
-        ''
-          }
+              <Link to='/DashBoard' className={style.header__link}><Message props='Добро пожаловать продавец' Children='Заявки на продавца' /></Link>
+              :
+              ''
+            }
           </nav>
           <nav>{props}</nav>
           <nav>
-         
+
             <HeaderNavigate children={<UserOutlined />} />
             <a onClick={logout} className={style.header__link}>Выйти</a></nav>
         </>)
@@ -52,7 +69,9 @@ const Header = ({props}) => {
 
 
       </div>
+      {contextHolder}
     </header>
+
   );
 };
 

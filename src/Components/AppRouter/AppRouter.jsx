@@ -48,8 +48,8 @@ const AppRouter = () => {
                         <Route path='/Appruved' element={<SellerAppruved/>}/>
                         <Route path='/Rejected' element={<SellerRejected/>}/>
                         <Route path='/MyCourse' element={<MyCourse/>}/>
-                        <Route path='/Course/:id/:title' element={<CourseDetails/>}/>
-                        <Route path='/ProfileSearch/:id/:studentId/:userName' element={<ProfileSearch/>}/>
+                        <Route path='/Course/:id/' element={<CourseDetails/>}/>
+                        <Route path='/ProfileSearch/:id/:studentId' element={<ProfileSearch/>}/>
                         <Route path='/NotReviewed' element={<NotRevievid/>}/>
                         <Route path='/ChangeCourse/:id' element={<ChangeCourse/>}/>
                         <Route path='/ProfileSeller' element={<ProfileSeller/>}/>
