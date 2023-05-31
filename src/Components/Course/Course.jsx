@@ -53,7 +53,7 @@ const Course = () => {
         const getData = async () => {
             setLoading(true)
             const resp = await axios(
-                'http://frez773-001-site1.atempurl.com/api/Course/courses',
+                'http://frez773-001-site1.atempurl.com/api/Course/courses?PageNumber=1&PageSize=100',
 
                 {
                     headers: {

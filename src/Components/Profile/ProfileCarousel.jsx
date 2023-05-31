@@ -4,6 +4,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import CreatePages from '../Pages/CreatePages';
 import PageDelete from '../Pages/PageDelete';
+import ChangePage from '../Pages/ChangePage';
+import { Link } from 'react-router-dom';
+import VideoPage from '../Pages/VideoPage';
 
 
 const ProfileCarousel = ({ courseId }) => {
@@ -36,13 +39,14 @@ const ProfileCarousel = ({ courseId }) => {
         <br />
         <br />
        {result.map((item) => (
-      <Card style={{marginBottom:"40px"}} key={item.id}>
+      <Card style={{marginBottom:"40px"}} key={item.id} extra={<Link to={`/ChangePage/${item.id}`}>Коректировать страницу</Link>}>
         <div className="" style={{display:'flex',justifyContent:'space-between',}}>
         <b style={{marginBottom:'25px',fontSize:'40px'}}>{item.title}</b>
         <PageDelete id={item.id}/>
         </div>
         <p style={{marginBottom:'25px',fontSize:'30px'}}>{item.description}</p>
         <p style={{fontSize:'20px'}}>{item.content}</p>
+        <VideoPage props={'коректировать'} id={item.id}/>
         
       </Card>
     ))}

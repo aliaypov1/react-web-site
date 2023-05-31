@@ -25,6 +25,7 @@ import ChangeCourse from "../Course/ChangeCourse";
 import ProfileSeller from "../Profile/ProfileSeller";
 import PagesDetails from "../Pages/PagesDetails";
 import Footer from "../Footer/Footer";
+import ChangePage from "../Pages/ChangePage";
 
 const AppRouter = () => {
     return (
@@ -38,6 +39,7 @@ const AppRouter = () => {
                         {parsedRoles.includes("Manager")?
                         <Route path='/DashBoard' element={<Dashboard/>}/>:''}
                         <Route path='/' element={<Content/>} />
+                        <Route path="/ChangePage/:id" element={<ChangePage/>}/>
                         <Route path='/CreateCursSeller' element={<Sellercreatecurs/>}/>
                         <Route path='/Status' element={<Status/>}/>
                         <Route path='/Partner' element={<Partner/>}/>

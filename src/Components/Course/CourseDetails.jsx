@@ -113,7 +113,7 @@ const CourseDetails = () => {
             </div>
             {/* <CoursePages/> */}
             <Carousel1 />
-            <div className="">
+            {/* <div className="">
               <h1 style={{fontSize:'40px',margin:'80px 0'}}>Содержание курса</h1>
               <div className="">
                 <p style={{fontSize:'29px',borderBottom:'2px solid black',margin:'40px 0'}}>Figma</p>
@@ -122,7 +122,7 @@ const CourseDetails = () => {
                 <p style={{fontSize:'29px',borderBottom:'2px solid black',margin:'40px 0'}}>Cinema 4d</p>
                 <p style={{fontSize:'29px',borderBottom:'2px solid black',margin:'40px 0'}}>Cinema 3d</p>
               </div>
-            </div>
+            </div> */}
             <h1 style={{ fontSize: '35px', textAlign: 'center', margin: '80px 0' }}>Авторы данного Курса</h1>
             <Row gutter={16}>
               <Col span={8}>
@@ -141,10 +141,7 @@ const CourseDetails = () => {
                 </Card>
               </Col>
             </Row>
-            <div className="" style={{textAlign:'center'}}>
-              <h1 style={{textAlign:'start',fontSize:'36px',fontWeight:'700',margin:'80px 0'}}>О курсе</h1>
-              <VideoPage />
-            </div>
+           
 
           </Card>
         </>}
