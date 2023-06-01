@@ -12,7 +12,6 @@ const ProfileSeller = () => {
     const [loading, setLoading] = useState(false)
     const [sortByPrice, setSortByPrice] = useState(null);
     const [sellerId, setSellerId] = useState([])
-    const [modal, setModal] = useState(false)
 
     const [searchValue, setSearchValue] = useState('');
     useEffect(() => {
@@ -123,9 +122,10 @@ const ProfileSeller = () => {
            
             <div className='container'>
                 <Menu style={{marginBottom:"40px"}} onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+                <SellerAppruved/>
+                <br />
             </div>
             <div className="container" style={{gap:'20px'}}>
-                <Button style={{marginBottom:'20px'}} onClick={()=> setModal(true)}>Создать курс</Button>
                 {loading ?
                     <div className="" style={{}}>
                         <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
@@ -140,7 +140,7 @@ const ProfileSeller = () => {
                         sellerId === item.sellerId ?
                         <Card key={item.id} title={item.title} style={{ marginBottom: '18px',boxShadow: ' -1px -1px 5px 0px rgba(0,0,0,0.75)' }} extra={<div style={{display:'flex',alignItems:'center'}}> <p style={{marginRight:'18px'}} name={item.title} id={item.id} children={item.isFree ? 'Бесплатно' : item.price + 'сом'} /><CourseDelete id={item.id}/></div>}>
 
-                            <p style={{ textAlign: 'right', margin: '8px', }}><Link to={`/Course/${item.id}/${item.title}`} style={{ color: "blue" }}>деталии</Link> </p>
+                            <p style={{ textAlign: 'right', margin: '8px', }}><Link to={`/Course/${item.id}`} style={{ color: "blue" }}>деталии</Link> </p>
                             <Card type="inner" title={item.description} extra=''>
                                 <div className="" style={{background:'#85233E', width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "20px" }}>{sellerId === item.sellerId ? <Link to={`/ChangeCourse/${item.id}`}>Коректировать</Link> : <></>}</div>
                             </Card>
@@ -155,7 +155,6 @@ const ProfileSeller = () => {
                        ''
 
                 }
-                <SellerAppruved open={modal} close={()=>setModal(false)}/>
             </div>
         </div>
     );

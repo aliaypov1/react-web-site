@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import CreateCourseForm from '../Forms/CreateCourseForm';
 import axios from 'axios';
-import { message } from 'antd';
+import { Button, message } from 'antd';
 
 const CreateCourse = ({close}) => {
     const [isFree, setIsFree] = useState(true)
     const [value, setValue] = useState({
-        title: '',
-        description: '',
+        title: 'Title',
+        description: 'Desc',
         isFree: isFree,
         price: 0
     })
@@ -33,7 +33,7 @@ const CreateCourse = ({close}) => {
     }
     return (
         <div>
-            <CreateCourseForm close={close} value={value} isFree={value.isFree} handleClick={handleClick} setValue={setValue} start={createCourse}/>
+           <Button onClick={createCourse}  >Создать курс</Button> {/* <CreateCourseForm close={close} value={value} isFree={value.isFree} handleClick={handleClick} setValue={setValue} start={createCourse}/> */}
         </div>
     );
 };

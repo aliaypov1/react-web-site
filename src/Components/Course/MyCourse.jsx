@@ -5,13 +5,13 @@ import { Card, Skeleton } from 'antd';
 import axios from 'axios';
 import { BASE_URL } from '../BASE_URL/BASE_URL';
 import DeleteMyCourse from './DeleteMyCourse';
+import { Link } from 'react-router-dom';
 
 const MyCourse = () => {
     const [loading, setLoading] = useState(false);
     const [userID, setUserID] = useState([]);
     const [result, setResult] = useState([]);
     const [isFirstRequestComplete, setFirstRequestComplete] = useState(false);
-  
     useEffect(() => {
       const getUser = async () => {
         setLoading(true);
@@ -70,7 +70,7 @@ const MyCourse = () => {
                         
                             <Card key={item.id} title={item.title} style={{ marginBottom: '30px', width:"400px" }}>
                                 <Card type="inner" title={item.description} extra={<DeleteMyCourse onCourseDeleted={handleCourseDeleted} courseId={item.id}/>}>
-                                    <div className="" style={{  width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "18px" }}></div>
+                                    <div className="" style={{  width: '100%',background:'#85233E', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "18px" }}><Link to={`/VideoLesson/${item.id}`}>Смотреть</Link></div>
                                 </Card>
                             </Card>
                        

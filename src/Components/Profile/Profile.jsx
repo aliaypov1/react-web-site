@@ -7,6 +7,7 @@ import ProfileNavigate from '../Header/ProfileHeader';
 import profileImg from '../img/profile.jpg'
 import ProfileUpDate from './ProfileUpDate';
 import Loader from '../UI/Loader/Loader';
+import { Image } from 'antd';
 
 
 const Profile = () => {
@@ -57,9 +58,10 @@ const Profile = () => {
                         <Loader />
                     ) : user ? (
                         <div className="">
-                            <p style={{ color: 'black', fontSize: '50px', marginBottom: '40px' }}>
+                            <p style={{ color: 'black', fontSize: '50px', marginBottom: '40px',display:'flex',justifyContent:'space-between'}}>
 
                                 {user.firstName ? user.firstName : profile.userName } {user.lastName}
+                                <Image width='160px' src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${user.id}`} />
                             </p>
                             <ProfileUpDate />
                             

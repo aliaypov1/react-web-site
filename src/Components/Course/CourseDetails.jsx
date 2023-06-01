@@ -6,9 +6,6 @@ import { Link, useParams } from 'react-router-dom';
 import Header from '../Header/Header';
 import Carousel1 from '../UI/Carousel/Carousel';
 import Loader from '../UI/Loader/Loader';
-import SellerBuy from '../Forms/SellerBuy';
-import Buy from '../Forms/Buy';
-import VideoPage from '../Pages/VideoPage';
 const { Meta } = Card;
 
 const CourseDetails = () => {
@@ -27,6 +24,31 @@ const CourseDetails = () => {
     }
     getCourse()
   }, [])
+  const [imageUrl, setImageUrl] = useState('');
+
+  useEffect(() => {
+    const getImg = async () => {
+      try {
+        setLoading(true)
+        const resp = await axios.get(`http://frez773-001-site1.atempurl.com/api/Course/course/${id}/image`, {
+          headers: {
+            "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+          },
+          responseType: 'arraybuffer'
+        });
+
+        const blob = new Blob([resp.data], { type: 'image/jpeg' });
+        const url = URL.createObjectURL(blob);
+        setImageUrl(url);
+        setLoading(false)
+      } catch (error) {
+        console.error(error);
+        setLoading(false)
+      }
+    };
+
+    getImg();
+  }, []);
   useEffect(() => {
     const getData = async () => {
       setLoading(true)
@@ -49,7 +71,7 @@ const CourseDetails = () => {
       {loading ? <div style={{ textAlign: 'center', marginTop: '90px' }}><Loader /></div> :
         <>
           <div className="" style={{ padding: ' 10px 62px' }}>
-            <div className="" style={{ width: '100%', height: '330px', background: '#85233E', borderRadius: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+            <div className="" style={{ width: '100%', height: '330px', background:imageUrl.length > 0 ?`url(${imageUrl})center/cover fixed` : '#85233E', borderRadius: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
               {
                 title &&
                 <>
@@ -100,7 +122,7 @@ const CourseDetails = () => {
                     }}
                   >
                     <Meta
-                      avatar={<Avatar src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${item.studentId}`} />}
+                      avatar={<Image width='60px' src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${item.studentId}`} />}
                       title={item.userName}
                       description={<Link to={`/ProfileSearch/${item.id}/${item.studentId}`}>Профиль</Link>}
                     />

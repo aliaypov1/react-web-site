@@ -30,9 +30,9 @@ const CreatePages = ({courseId}) => {
     };
     const [value, setValue] = useState({
         courseId: courseId,
-        title: "",
-        description: "",
-        content: ""
+        title: "title",
+        description: "desc",
+        content: "content"
     })
     const createPages = async () => {
         try{
@@ -48,79 +48,11 @@ const CreatePages = ({courseId}) => {
 }
     return (
         <>
-            <Button onClick={showDrawer} icon={<PlusOutlined />}>
-                Новая страница
-            </Button>
-            <Drawer
-                title="Create a new account"
-                width={720}
-                onClose={onClose}
-                open={open}
-                bodyStyle={{
-                    paddingBottom: 80,
-                }}
-                extra={
-                    <Space>
-                        <Button onClick={onClose}>Cancel</Button>
+            
                         <Button onClick={createPages}>
-                            Создать
+                            Создать страницу
                         </Button>
-                    </Space>
-                }
-            >
-                <Form layout="vertical" hideRequiredMark>
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <Form.Item
-                                name="Title"
-                                label="Title"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Title',
-                                    },
-                                ]}
-                            >
-                                <Input placeholder="Title" onChange={e => setValue({...value, title:e.target.value})} />
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                        </Col>
-                    </Row>
-                    <Row gutter={16}>
-                        <Col span={24}>
-                            <Form.Item
-                                name="Description"
-                                label="Descripton"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Description',
-                                    },
-                                ]}
-                            >
-                                <Input.TextArea rows={4} placeholder="Description" onChange={e => setValue({...value,description:e.target.value})} />
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                    <Row gutter={16}>
-                        <Col span={24}>
-                            <Form.Item
-                                name="Content"
-                                label="Content"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'please enter url description',
-                                    },
-                                ]}
-                            >
-                                <Input.TextArea rows={4} placeholder="Content" onChange={e => setValue({...value,content:e.target.value})} />
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                </Form>
-            </Drawer>
+            
         </>
     );
 };

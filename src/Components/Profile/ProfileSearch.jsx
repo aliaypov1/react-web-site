@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Header from '../Header/Header';
-import { Avatar, Card } from 'antd';
+import { Avatar, Card, Image } from 'antd';
 import Item from 'antd/es/list/Item';
 import Loader from '../UI/Loader/Loader';
 const { Meta } = Card;
@@ -53,7 +53,7 @@ const ProfileSearch = () => {
                         }}
                     >
                         <Meta
-                            avatar={<Avatar src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${result.id}`} />}
+                            avatar={<Image width='60px' src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${result.id}`} />}
                             title={result.userName}
                             description={result.email}
                         />

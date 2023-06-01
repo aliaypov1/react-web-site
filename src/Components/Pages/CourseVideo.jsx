@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import DeleteVideoPage from './DeleteVideoPage';
 
-const VideoPage = ({ id,props }) => {
+const CourseVideo = ({ id,props }) => {
     const [result, serResult] = useState([])
     useEffect(() => {
         const getData = async () => {
@@ -22,7 +22,6 @@ const VideoPage = ({ id,props }) => {
            {
                 result.map(item =>
                     <Card  style={{margin:'80px 0',padding:'0 0 0 60px  '}} extra={props} key={item.id}>
-                        <DeleteVideoPage id={item.id}/>
                         <p style={{fontSize:'28px'}}>{item.title}</p>
                         <p style={{fontSize:'38px'}}>{item.description}</p>
                          <iframe width="1000" height="605" src={`https://www.youtube.com/embed/${item.videoUrl}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -34,4 +33,4 @@ const VideoPage = ({ id,props }) => {
     );
 };
 
-export default VideoPage;
+export default CourseVideo;

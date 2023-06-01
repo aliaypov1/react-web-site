@@ -7,6 +7,7 @@ import PageDelete from '../Pages/PageDelete';
 import ChangePage from '../Pages/ChangePage';
 import { Link } from 'react-router-dom';
 import VideoPage from '../Pages/VideoPage';
+import CourseVideoPage from '../Pages/CourseVideoPage';
 
 
 const ProfileCarousel = ({ courseId }) => {
@@ -46,7 +47,7 @@ const ProfileCarousel = ({ courseId }) => {
         </div>
         <p style={{marginBottom:'25px',fontSize:'30px'}}>{item.description}</p>
         <p style={{fontSize:'20px'}}>{item.content}</p>
-        <VideoPage props={'коректировать'} id={item.id}/>
+        <CourseVideoPage id={item.id}/>
         
       </Card>
     ))}

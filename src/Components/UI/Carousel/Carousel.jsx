@@ -1,8 +1,7 @@
-import { Card, Carousel } from 'antd';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import VideoPage from '../../Pages/VideoPage';
+import CourseVideo from '../../Pages/CourseVideo';
 const contentStyle = {
     padding:'20px',
     background: 'aliceblue',
@@ -34,7 +33,7 @@ const Carousel1 = () => {
                 <b style={{marginBottom:'25px',fontSize:'40px'}}>{item.title}</b>
                     <p style={{marginBottom:'25px',fontSize:'30px'}}>{item.description}</p>
                     <p style={{fontSize:'20px'}}>{item.content}</p>
-                   <VideoPage id={item.id}/>
+                   <CourseVideo id={item.id}/>
                 </h3>
             </div>
              )
