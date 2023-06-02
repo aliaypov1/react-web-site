@@ -7,7 +7,7 @@ const Buy = ({ name, id, children }) => {
 
     const addCourse = async () => {
         try {
-            const resp = await axios.post(`http://frez773-001-site1.atempurl.com/api/Course/add-course-to-student?courseId=${id}`, {}, {
+            const resp = await axios.post(`http://frez773-001-site1.atempurl.com/api/Student/PaymentForCourse?courseId=${id}`, {}, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
                 }

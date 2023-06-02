@@ -1,6 +1,7 @@
 import React from 'react';
 import Loader from '../UI/Loader/Loader';
 import CourseVideo from '../Pages/CourseVideo';
+import VideoCourse from './VideoCourse';
 
 const Video = ({size,loading}) => {
     if(loading)return <div className="container"><Loader/></div> 
@@ -10,7 +11,7 @@ const Video = ({size,loading}) => {
                size.length > 0 ? size.map((item, i)=>(
                     <div className="">
                         
-                        <CourseVideo id={item.id}/>
+                        <VideoCourse id={item.id}/>
                     </div>
                 ))
                 :

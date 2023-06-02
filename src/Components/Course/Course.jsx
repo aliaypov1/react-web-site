@@ -3,20 +3,22 @@ import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import style from './Course.module.css'
 import { Link } from 'react-router-dom';
-import { Card,  Menu } from 'antd';
+import { Card, Menu } from 'antd';
 import Buy from '../Forms/Buy';
 import Search from 'antd/es/transfer/search';
 import gImg from '../img/girl.png'
 import { seller } from '../Token/Token';
 import Loader from '../UI/Loader/Loader';
-import CourseURL from './CourseURL';
 import SellerBuy from '../Forms/SellerBuy';
+import CoursePaginate from './CoursePaginate';
 const Course = () => {
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
     const [sortByPrice, setSortByPrice] = useState(null);
     const [sellerId, setSellerId] = useState([])
     const [status, setStatus] = useState([])
+    const [currentPage, setCurrentPage] = useState(1)
+    const [videoPerPage] = useState(6)
     const [searchValue, setSearchValue] = useState('');
     useEffect(() => {
 
@@ -122,13 +124,16 @@ const Course = () => {
         },
 
     ];
-   
+
     const [current, setCurrent] = useState('mail');
     const onClick = (e) => {
         console.log('click ', e);
         setCurrent(e.key);
     };
-
+    const lastVideoIndex = currentPage * videoPerPage;
+    const firstVideoIndex = lastVideoIndex - videoPerPage;
+    const currentVideo = sortedAndFilteredCourses.slice(firstVideoIndex, lastVideoIndex)
+    const paginate = pageNumber => setCurrentPage(pageNumber)
     return (
         <div>
 
@@ -140,8 +145,8 @@ const Course = () => {
                     width: 200,
                 }}
             />} />
-            
-            <section className={style.about}>
+
+            <section className={style.about} >
 
                 <div className={style.about__container}>
                     <div className="">
@@ -151,7 +156,7 @@ const Course = () => {
                             {!seller ?
                                 <Link to={status === 'Rejected' ? '/Rejected' : status === 'Approved' ? '/Appruved' : status === null ? '/Partner' : '/NotReviewed'} style={{ color: 'white', padding: "20px 40px ", border: '1px white solid' }}>Стать продавцом</Link>
                                 :
-                             ''
+                                ''
                             }
                         </div>
 
@@ -160,27 +165,27 @@ const Course = () => {
                         <img src={gImg} alt="" />
                     </div>
 
-                </div>
+                </div >
             </section>
-            <div className='container'>
-                 {/* <CourseURL/> */}
+            <div id='course' className='container'>
+                {/* <CourseURL/> */}
                 <Menu style={{ marginBottom: '40px' }} onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
             </div>
             <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr ', gap: '20px' }}>
                 {loading ?
-                    <Loader/>
+                    <Loader />
                     :
-                    sortedAndFilteredCourses.length > 0 ? sortedAndFilteredCourses.map((item) =>
+                    currentVideo.length > 0 ? currentVideo.map((item) =>
                     (
 
-
-                        <Card key={item.id} title={item.title} style={{ marginBottom: '18px', width: "400px", boxShadow: ' -1px -1px 5px 0px rgba(0,0,0,0.75)' }} extra=''>
-                            <p style={{ textAlign: 'right', margin: '8px', }}><Link to={`/Course/${item.id}`} style={{ color: "blue" }}>Описание</Link> </p>
-                            <Card type="inner" title={item.description} extra=''>
-                                <div className="" style={{ background: '#85233E', width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "20px" }}> {sellerId === item.sellerId ? <SellerBuy/> : <Buy name={item.title} id={item.id} children={item.isFree ? 'Бесплатно' : 'купить за ' + item.price + 'сом'} />}</div>
+                        <>
+                            <Card key={item.id} title={item.title} style={{ marginBottom: '18px', width: "400px", boxShadow: ' -1px -1px 5px 0px rgba(0,0,0,0.75)' }} extra=''>
+                                <p style={{ textAlign: 'right', margin: '8px', }}><Link to={`/Course/${item.id}`} style={{ color: "blue" }}>Описание</Link> </p>
+                                <Card type="inner" title={item.description} extra=''>
+                                    <div className="" style={{ background: '#85233E', width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "20px" }}> {sellerId === item.sellerId ? <SellerBuy /> : <Buy name={item.title} id={item.id} children={item.isFree ? 'Бесплатно' : 'купить за ' + item.price + 'сом'} />}</div>
+                                </Card>
                             </Card>
-                           
-                        </Card>
+                        </>
 
                     )
                     )
@@ -189,6 +194,15 @@ const Course = () => {
 
                 }
 
+
+
+            </div>
+            <div className="" style={{ textAlign: 'center', margin: "60px 0" }}>
+                <CoursePaginate
+                    videoPerPage={videoPerPage}
+                    totalSize={sortedAndFilteredCourses.length}
+                    paginate={paginate}
+                />
             </div>
         </div>
     );

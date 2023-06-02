@@ -4,11 +4,10 @@ import { useParams } from 'react-router-dom';
 import Video from './Video';
 import VideoPagination from './VideoPagination';
 import VideoPage from '../Pages/VideoPage';
+import Header from '../Header/Header';
 
 const VideoLesson = () => {
     const [size, setSize] = useState([])
-    const [currentPage, setCurrentPage] = useState(1)
-    const [videoPerPage] = useState(1)
     const [loading,setLoading] = useState(false)
     const {id} = useParams()
     useEffect(()=>{
@@ -26,19 +25,11 @@ const VideoLesson = () => {
         
         getPage()
     },[])
-    const lastVideoIndex = currentPage + videoPerPage
-    const firstVideoIndex = lastVideoIndex - videoPerPage
-    const currentVideo = size.slice(firstVideoIndex, lastVideoIndex)
-    const paginate = pageNumber => setCurrentPage(pageNumber)
     return (
         <div>
+            <Header/>
             <h1 style={{textAlign:'center',fontSize:"32px",margin:'40px 0'}}>Видео уроки</h1>
             <Video size={size} loading={loading}/>
-            {/* <VideoPagination 
-            videoPerPage={videoPerPage}
-            totalSize={size.length}
-            paginate={paginate}
-            /> */}
         </div>
     );
 };

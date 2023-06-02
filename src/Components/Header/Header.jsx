@@ -6,6 +6,7 @@ import HeaderNavigate from './HeaderNavigate';
 import { UserOutlined } from '@ant-design/icons';
 import Message from '../UI/Modals/Message';
 import { Button, notification } from 'antd';
+import Balance from '../PostService/Balance';
 const Header = ({ props }) => {
   const [api, contextHolder] = notification.useNotification();
   const logout = () => {
@@ -49,7 +50,7 @@ const Header = ({ props }) => {
           </nav>
           <nav>{props}</nav>
           <nav>
-
+            <Balance/>
             <HeaderNavigate children={<UserOutlined />} />
             <a onClick={logout} className={style.header__link}>Выйти</a></nav>
         </>)
