@@ -3,7 +3,7 @@ import { Button, Col, DatePicker, Drawer, Form, Input, Row, Select, Space, messa
 import axios from 'axios';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-const { Option } = Select;
+import GetPage from './GetPage';
 const ChangePage = () => {
     const { id } = useParams()
     const [open, setOpen] = useState(false);
@@ -183,6 +183,7 @@ const ChangePage = () => {
                     </Row>
                 </Form>
             </Drawer>
+            <GetPage id={id}/>
 
         </>
     );

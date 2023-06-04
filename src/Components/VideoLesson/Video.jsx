@@ -1,6 +1,5 @@
 import React from 'react';
 import Loader from '../UI/Loader/Loader';
-import CourseVideo from '../Pages/CourseVideo';
 import VideoCourse from './VideoCourse';
 
 const Video = ({size,loading}) => {

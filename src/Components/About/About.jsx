@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import axios from 'axios';
 import gImg from '../img/girl.png'
 import VideoPage from '../Pages/VideoPage';
+import Footer from '../Footer/Footer';
 
 
 const About = () => {
@@ -85,6 +86,7 @@ const About = () => {
                     </div>
                 </div>
             </section>
+            <Footer/>
         </>
     );
 };

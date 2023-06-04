@@ -113,10 +113,10 @@ const paginate = pageNumber => setCurrentPage(pageNumber)
         
           {currentVideo.map((item) => (
             <div key={item.id}>
-              <Card title={item.companyName} style={{ marginBottom: '30px' }}>
+              <Card title={ 'Компания : ' +item.companyName} style={{ marginBottom: '30px' }}>
                 <Card
                   type="inner"
-                  title={item.companyDescription}
+                  title={'Описание : ' + item.companyDescription}
                   extra={<Link to={`/Details/${item.id}`}>Детали</Link>}
                 >
                   <div
