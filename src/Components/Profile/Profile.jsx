@@ -9,6 +9,7 @@ import ProfileUpDate from './ProfileUpDate';
 import Loader from '../UI/Loader/Loader';
 import { Image } from 'antd';
 import IncreaseBalance from '../PostService/IncreaseBalance';
+import Balance from '../PostService/Balance';
 
 
 const Profile = () => {
@@ -63,14 +64,15 @@ const Profile = () => {
 
                                 {user.firstName ? user.firstName : profile.userName } {user.lastName}
                                 <div className="">
-                                <Image width='160px' src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${user.id}`} />
-                                <br />
                                 <IncreaseBalance/>
                                 </div>
                                 
                             </p>
+                            <br />
+                            <br />
                             <ProfileUpDate />
-                            
+                            <br />
+                            <br />
                             {user.aboutMe ? user.aboutMe && (
                                 <p style={{ color: "black", fontSize: '27px',}}>О себе: {user.aboutMe}</p>
                             ) :

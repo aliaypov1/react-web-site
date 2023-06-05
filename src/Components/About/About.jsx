@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import style from './About.module.css'
 import Header from '../Header/Header';
-import axios from 'axios';
 import gImg from '../img/girl.png'
-import VideoPage from '../Pages/VideoPage';
 import Footer from '../Footer/Footer';
 
 

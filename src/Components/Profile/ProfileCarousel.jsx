@@ -4,10 +4,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import CreatePages from '../Pages/CreatePages';
 import PageDelete from '../Pages/PageDelete';
-import ChangePage from '../Pages/ChangePage';
 import { Link } from 'react-router-dom';
-import VideoPage from '../Pages/VideoPage';
 import CourseVideoPage from '../Pages/CourseVideoPage';
+import ProfileTest from './ProfileTest';
 
 
 const ProfileCarousel = ({ courseId }) => {
@@ -48,6 +47,8 @@ const ProfileCarousel = ({ courseId }) => {
         <p style={{marginBottom:'25px',fontSize:'30px'}}>{item.description}</p>
         <p style={{fontSize:'20px'}}>{item.content}</p>
         <CourseVideoPage id={item.id}/>
+        <h1 style={{textAlign:'center',fontSize:'30px'}}>Тесты данного курса</h1>
+        <ProfileTest id={item.id}/>
         
       </Card>
     ))}

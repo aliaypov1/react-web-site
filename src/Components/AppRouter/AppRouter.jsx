@@ -1,4 +1,4 @@
-import { BrowserRouter,Routes, Route, Router, Navigate } from "react-router-dom";
+import { BrowserRouter,Routes, Route,  Navigate } from "react-router-dom";
 import Login from "../PostService/Login";
 import Register from "../PostService/Register";
 import ForgotPassword from "../PostService/ForgotPassword";
@@ -24,10 +24,13 @@ import Security from "../Security/Security";
 import ChangeCourse from "../Course/ChangeCourse";
 import ProfileSeller from "../Profile/ProfileSeller";
 import PagesDetails from "../Pages/PagesDetails";
-import Footer from "../Footer/Footer";
 import ChangePage from "../Pages/ChangePage";
 import ChangeUrl from "../Pages/ChangeUrl";
 import VideoLesson from "../VideoLesson/VideoLesson";
+import Test from "../Question/Test";
+import Question from "../Question/TestQuest";
+import QuestionAdd from "../Question/QuestionAdd";
+import AddAnswer from "../Question/AddAnswer";
 
 const AppRouter = () => {
     return (
@@ -41,6 +44,8 @@ const AppRouter = () => {
                         {parsedRoles.includes("Manager")?
                         <Route path='/DashBoard' element={<Dashboard/>}/>:''}
                         <Route path='/' element={<Content/>} />
+                        <Route path='/Test/:id' element={<Test/>}/>
+                        <Route path='/Question/:id' element={<Question/>}/>
                         <Route path='/VideoLesson/:id' element={<VideoLesson/>}/>
                         <Route path="/ChangePage/:id" element={<ChangePage/>}/>
                         <Route path='/Changeurl/:id' element={<ChangeUrl/>}/>
@@ -60,6 +65,8 @@ const AppRouter = () => {
                         <Route path='/ChangeCourse/:id' element={<ChangeCourse/>}/>
                         <Route path='/ProfileSeller' element={<ProfileSeller/>}/>
                         <Route path='/PageDetail/:id' element={<PagesDetails/>}/>
+                        <Route path='/QuestionAdd/:id' element={<QuestionAdd/>}/>
+                        <Route path='/AddAnswer/:id' element={<AddAnswer/>}/>
                         <Route
                             path="*"
                             element={<Navigate to="/NotFound" replace />}
