@@ -6,6 +6,7 @@ import { Button, message } from 'antd';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import GetAllquest from './GetAllquest';
+import ChangeTest from './ChangeTest';
 
 const QuestionAdd = () => {
     const{id} = useParams()
@@ -30,6 +31,7 @@ const QuestionAdd = () => {
             <Header />
             <ProfileNavigate />
             <div className="container">
+                <ChangeTest id={id}/>
                 <Input onChange={e => setQuestion({...question, text:e.target.value})} placeholder='New question' />
                 <Button onClick={addQuest}>Создать</Button>
                 <GetAllquest id={id}/>

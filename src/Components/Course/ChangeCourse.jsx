@@ -48,7 +48,7 @@ const ChangeCourse = () => {
                 <Button onClick={handleClick}>{
                     value.IsFree ? <p>Бесплатно</p>:<p>платно</p>
                 }</Button>
-                <UploadImageForm/>
+                <UploadImageForm id={id}/>
             <ProfileCarousel courseId={id}/>
             </Form>
         </div>

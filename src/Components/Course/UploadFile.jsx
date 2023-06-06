@@ -1,7 +1,7 @@
 import { message } from 'antd';
 import axios from 'axios';
 import CourseURL from './CourseURL';
-const UploadImageForm = () => {
+const UploadImageForm = ({id}) => {
     const handleImageUpload = async (event) => {
         const imageFile = event.target.files[0];
       
@@ -13,7 +13,7 @@ const UploadImageForm = () => {
       
         try {
           // Выполняем запрос с помощью axios
-          const response = await axios.put('http://frez773-001-site1.atempurl.com/api/Course/courses/15/image', formData, {
+          const response = await axios.put(`http://frez773-001-site1.atempurl.com/api/Course/courses/${id}/image`, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
               "Authorization": `Bearer ${localStorage.getItem('accessToken')}`

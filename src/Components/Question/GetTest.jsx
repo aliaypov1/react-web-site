@@ -27,7 +27,7 @@ const GetTest = ({ id,props }) => {
         <div className='container'>
             {
                result.length > 0 ? result.map((item) => (
-                        <Card  extra={<> <Link to={`/Question/${item.id}`}>Решить тест</Link> {props} </>} style={{marginTop:'40px'}} title={item.title} bordered={false}>   
+                        <Card  extra={<> <Link to={`/Question/${item.id}`}>Перейти к задачам</Link> {props} </>} style={{marginTop:'40px'}} title={item.title} bordered={false}>   
                         <p>{item.description}</p>
                         </Card>
                 ))

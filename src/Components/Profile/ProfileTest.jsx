@@ -1,9 +1,8 @@
-import { Button, Card, Col, Row, message } from 'antd';
+import {  Card, } from 'antd';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Header from '../Header/Header';
-import ProfileNavigate from '../Header/ProfileHeader';
 import { Link } from 'react-router-dom';
+import DeleteTest from '../Question/DeleteTest';
 
 const ProfileTest = ({ id,props }) => {
     const [result, setResult] = useState([])
@@ -27,7 +26,7 @@ const ProfileTest = ({ id,props }) => {
         <div className='container'>
             {
                result.length > 0 ? result.map((item) => (
-                        <Card  extra={<> <Link to={`/Question/${item.id}`}>Зайти</Link> <Link to={`/QuestionAdd/${item.id}`} style={{marginLeft:'12px'}}>Добавить задание</Link>  </>} style={{marginTop:'40px'}} title={item.title} bordered={false}>   
+                        <Card  extra={<> <DeleteTest id={item.id}/> <Link to={`/Question/${item.id}`}>Зайти</Link> <Link to={`/QuestionAdd/${item.id}`} style={{marginLeft:'12px'}}>Добавить задание</Link>  </>} style={{marginTop:'40px'}} title={item.title} bordered={false}>   
                         <p>{item.description}</p>
                         </Card>
                 ))

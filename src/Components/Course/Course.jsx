@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import style from './Course.module.css'
 import { Link } from 'react-router-dom';
-import { Card, Menu } from 'antd';
+import { Card, Menu, Skeleton } from 'antd';
 import Buy from '../Forms/Buy';
 import Search from 'antd/es/transfer/search';
 import gImg from '../img/girl.png'
@@ -178,11 +178,19 @@ const Course = () => {
                 {/* <CourseURL/> */}
                 <Menu style={{ marginBottom: '40px' }} onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
             </div>
-            <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr ', gap: '20px' }}>
                 {loading ?
-                    <Loader />
+                 <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr ', }}>
+                 <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                 <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                 <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                 <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                 <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                 <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                 </div>
                     :
-                    currentVideo.length > 0 ? currentVideo.map((item) =>
+                    
+            <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr ', gap: '20px' }}>
+                 { currentVideo.length > 0 ? currentVideo.map((item) =>
                     (
 
                         <>
@@ -196,14 +204,13 @@ const Course = () => {
 
                     )
                     )
-                        :
-                        <p style={{ color: 'black', fontSize: '60px', textAlign: 'center', padding: '50px', height: '100vh' }}>нечего не найденно</p>
-
+                :
+                <p style={{textAlign:"center",fontSize:'40px',margin:"60px 0"}}>Нечего не найденно</p>}
+    </div>
                 }
 
 
 
-            </div>
             {loading ? '':
             <div className="" style={{ textAlign: 'center', margin: "60px 0" }}>
                 <CoursePaginate

@@ -31,6 +31,7 @@ import Test from "../Question/Test";
 import Question from "../Question/TestQuest";
 import QuestionAdd from "../Question/QuestionAdd";
 import AddAnswer from "../Question/AddAnswer";
+import Answers from "../Question/AnswerTest";
 
 const AppRouter = () => {
     return (
@@ -48,6 +49,7 @@ const AppRouter = () => {
                         <Route path='/Question/:id' element={<Question/>}/>
                         <Route path='/VideoLesson/:id' element={<VideoLesson/>}/>
                         <Route path="/ChangePage/:id" element={<ChangePage/>}/>
+                        <Route path="/AnswerTest/:id" element={<Answers/>}/>
                         <Route path='/Changeurl/:id' element={<ChangeUrl/>}/>
                         <Route path='/CreateCursSeller' element={<Sellercreatecurs/>}/>
                         <Route path='/Status' element={<Status/>}/>
