@@ -16,12 +16,12 @@ const items = [
     key: 'Безопасноть',
   },
   {
-    label: seller ? <Link to='/ProfileSeller'>Продавец</Link>:<p></p>,
+    label: seller ? <Link to='/ProfileSeller'>Продавец</Link> : <p></p>,
     key: 'Продавец',
   },
-  
+
 ];
-const HeaderNavigate = ({children}) => (
+const HeaderNavigate = ({ children }) => (
   <Dropdown
     menu={{
       items,

@@ -47,117 +47,117 @@ const Dashboard = () => {
   const items = [
 
     {
-        label: 'сортировать по',
-        key: 'SubMenu',
-        children: [
+      label: 'сортировать по',
+      key: 'SubMenu',
+      children: [
+        {
+          type: 'group',
+          children: [
             {
-                type: 'group',
-                children: [
-                    {
-                        label: (
-                            <p onClick={() => handleSort(0)}>не просмотренные</p>
-                        ),
-                        key: 'setting:1',
-                    },
-                    {
-                        label: (
-                            <p onClick={() => handleSort(1)}>отказаные</p>
-                        ),
-                        key: 'setting:1',
-                    },
-                    {
-                        label: (
-                            <p onClick={() => handleSort(2)}>принетые</p>
-                        ),
-                        key: 'setting:1',
-                    },
-                    {
-                        label: (
-                            <p onClick={() => handleViewAll()}>показать все</p>
-                        ),
-                        key: 'setting:1',
-                    },
-
-                ],
+              label: (
+                <p onClick={() => handleSort(0)}>не просмотренные</p>
+              ),
+              key: 'setting:1',
             },
-        ],
+            {
+              label: (
+                <p onClick={() => handleSort(1)}>отказаные</p>
+              ),
+              key: 'setting:1',
+            },
+            {
+              label: (
+                <p onClick={() => handleSort(2)}>принетые</p>
+              ),
+              key: 'setting:1',
+            },
+            {
+              label: (
+                <p onClick={() => handleViewAll()}>показать все</p>
+              ),
+              key: 'setting:1',
+            },
+
+          ],
+        },
+      ],
     },
 
-];
-const [current, setCurrent] = useState('mail');
-const onClick = (e) => {
+  ];
+  const [current, setCurrent] = useState('mail');
+  const onClick = (e) => {
     console.log('click ', e);
     setCurrent(e.key);
-};
-const lastVideoIndex = currentPage * videoPerPage;
-const firstVideoIndex = lastVideoIndex - videoPerPage;
-const currentVideo = filteredData.slice(firstVideoIndex, lastVideoIndex)
-const paginate = pageNumber => setCurrentPage(pageNumber)
+  };
+  const lastVideoIndex = currentPage * videoPerPage;
+  const firstVideoIndex = lastVideoIndex - videoPerPage;
+  const currentVideo = filteredData.slice(firstVideoIndex, lastVideoIndex)
+  const paginate = pageNumber => setCurrentPage(pageNumber)
   return (
     <div>
-      <Header/>
-      
+      <Header />
+
       <div
-      id='start'
-          className="container"
-          style={{ padding: '20px', marginTop: '80px', borderRadius: '16px', maxWidth: '1400px' }}
-          
-        >
-           {loading ? (
-        <Loader/>
-      ) : (
-        <div className="">
+        id='start'
+        className="container"
+        style={{ padding: '20px', marginTop: '80px', borderRadius: '16px', maxWidth: '1400px' }}
+
+      >
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className="">
             <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
             <br />
             <br />
-        
-          {currentVideo.map((item) => (
-            <div key={item.id}>
-              <Card title={ 'Компания : ' +item.companyName} style={{ marginBottom: '30px' }}>
-                <Card
-                  type="inner"
-                  title={'Описание : ' + item.companyDescription}
-                  extra={<Link to={`/Details/${item.id}`}>Детали</Link>}
-                >
-                  <div
-                    className=""
-                    style={{
-                      background: 'rgb(173, 215, 20)',
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: '3px',
-                      color: 'white',
-                      textAlign: 'center',
-                      fontSize: '20px',
-                    }}
+
+            {currentVideo.map((item) => (
+              <div key={item.id}>
+                <Card title={'Компания : ' + item.companyName} style={{ marginBottom: '30px' }}>
+                  <Card
+                    type="inner"
+                    title={'Описание : ' + item.companyDescription}
+                    extra={<Link to={`/Details/${item.id}`}>Детали</Link>}
                   >
-                    {item.status === 0 ? (
-                      <p>не просмотренно</p>
-                    ) : item.status === 1 ? (
-                      <p style={{ background: 'red', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        отказано
-                      </p>
-                    ) : (
-                      <p style={{ background: 'green', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '5px' }}>
-                        принято
-                      </p>
-                    )}
-                  </div>
+                    <div
+                      className=""
+                      style={{
+                        background: 'rgb(173, 215, 20)',
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '3px',
+                        color: 'white',
+                        textAlign: 'center',
+                        fontSize: '20px',
+                      }}
+                    >
+                      {item.status === 0 ? (
+                        <p>не просмотренно</p>
+                      ) : item.status === 1 ? (
+                        <p style={{ background: 'red', borderRadius: '5px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                          отказано
+                        </p>
+                      ) : (
+                        <p style={{ background: 'green', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '5px' }}>
+                          принято
+                        </p>
+                      )}
+                    </div>
+                  </Card>
                 </Card>
-              </Card>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-    <div className="" style={{textAlign:'center',margin:"60px 0"}}>
-                    <DashBoardPaginate
-                        videoPerPage={videoPerPage}
-                        totalSize={filteredData.length}
-                        paginate={paginate}
-                        />
-                    
-                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="" style={{ textAlign: 'center', margin: "60px 0" }}>
+        <DashBoardPaginate
+          videoPerPage={videoPerPage}
+          totalSize={filteredData.length}
+          paginate={paginate}
+        />
+
+      </div>
     </div>
   );
 };

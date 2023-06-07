@@ -20,40 +20,40 @@ import { Button, Col, DatePicker, Drawer, Form, Input, Row, Select, Space, messa
 import axios from 'axios';
 import { useState } from 'react';
 const { Option } = Select;
-const CreatePages = ({courseId}) => {
-    const [open, setOpen] = useState(false);
-    const showDrawer = () => {
-        setOpen(true);
-    };
-    const onClose = () => {
-        setOpen(false);
-    };
-    const [value, setValue] = useState({
-        courseId: courseId,
-        title: "title",
-        description: "desc",
-        content: "content"
-    })
-    const createPages = async () => {
-        try{
-        const res = await axios.post(`http://frez773-001-site1.atempurl.com/api/Page/course/page/create`, {...value},{
-            headers: {
-                "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-        message.success(res.data.message)
-    }catch(error){
-        message.error(error.response.message)
+const CreatePages = ({ courseId }) => {
+  const [open, setOpen] = useState(false);
+  const showDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
+  const [value, setValue] = useState({
+    courseId: courseId,
+    title: "title",
+    description: "desc",
+    content: "content"
+  })
+  const createPages = async () => {
+    try {
+      const res = await axios.post(`http://frez773-001-site1.atempurl.com/api/Page/course/page/create`, { ...value }, {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem('accessToken')}`
+        }
+      })
+      message.success(res.data.message)
+    } catch (error) {
+      message.error(error.response.message)
     }
-}
-    return (
-        <>
-            
-                        <Button onClick={createPages}>
-                            Создать страницу
-                        </Button>
-            
-        </>
-    );
+  }
+  return (
+    <>
+
+      <Button onClick={createPages}>
+        Создать страницу
+      </Button>
+
+    </>
+  );
 };
 export default CreatePages;

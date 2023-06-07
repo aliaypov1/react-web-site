@@ -6,9 +6,9 @@ const Loader = () => (
       width: '100%',
     }}
   >
-     <div className="example">
-    <Spin/>
-  </div>
+    <div className="example">
+      <Spin />
+    </div>
 
   </Space>
 );

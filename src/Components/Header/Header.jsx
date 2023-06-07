@@ -22,7 +22,7 @@ const Header = ({ props }) => {
       message: `Наши контакты`,
       description:
         '📱  WhatsApp - 996 707 707',
-        
+
       placement,
     });
   };
@@ -50,7 +50,7 @@ const Header = ({ props }) => {
           </nav>
           <nav>{props}</nav>
           <nav>
-            <Balance/>
+            <Balance />
             <HeaderNavigate children={<UserOutlined />} />
             <a onClick={logout} className={style.header__link}>Выйти</a></nav>
         </>)

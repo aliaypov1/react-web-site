@@ -8,7 +8,7 @@ import regImg from '../img/png.png'
 import ErrorMessage from '../UI/Message/ErrorMessage';
 import Loader from '../UI/Loader/Loader';
 
-const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
+const LoginForm = ({ inputValue, setInputValue, login, loading, props }) => {
   const [rememberMe, setRemamberMe] = useState(false)
   const [checked, setChecked] = useState(false);
   const [checkeds, setCheckeds] = useState(false);
@@ -22,10 +22,10 @@ const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
   };
- 
+
   return (
     <>
-     
+
       <div className={style.autorization__container}>
         <Form
           name="normal_login"
@@ -33,10 +33,10 @@ const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
             remember: true,
           }}
           onFinish={onFinish}
-          style={{background:'#F6F6F6',padding:'70px',display:'flex',flexDirection:'column',justifyContent:'center'}}
-      >
-           <h1 style={{color:'black',fontSize:'62px',fontWeight:'700'}}>Войдите</h1>
-            <p style={{color:'black',fontSize:'30px',marginBottom:'50px',fontWeight:'700'}}>В свой аккаунт</p>
+          style={{ background: '#F6F6F6', padding: '70px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+        >
+          <h1 style={{ color: 'black', fontSize: '62px', fontWeight: '700' }}>Войдите</h1>
+          <p style={{ color: 'black', fontSize: '30px', marginBottom: '50px', fontWeight: '700' }}>В свой аккаунт</p>
           <Form.Item
             name="username"
             rules={[
@@ -68,27 +68,27 @@ const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
               onChange={e => setInputValue({ ...inputValue, password: e.target.value })} />
 
           </Form.Item>
-         
+
           <Form.Item>
-            {loading ? <Loader/> : ''}
-            
-           
-            <div style={{display:'flex',justifyContent:'space-between',padding:'20px 20px 0 0'}}>
+            {loading ? <Loader /> : ''}
+
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '20px 20px 0 0' }}>
               <div className="">
-              <input
-              style={{ marginRight: "10px" }}
-              type="checkbox"
-              checked={checked}
-              onChange={handleCheckboxChange}
-              onClick={() => setRemamberMe(prev => !prev)}
-              name='valid'
-            />
-            <label>Я не робот</label>
+                <input
+                  style={{ marginRight: "10px" }}
+                  type="checkbox"
+                  checked={checked}
+                  onChange={handleCheckboxChange}
+                  onClick={() => setRemamberMe(prev => !prev)}
+                  name='valid'
+                />
+                <label>Я не робот</label>
               </div>
-           
-           {props}
+
+              {props}
             </div>
-            
+
 
 
 
@@ -96,18 +96,18 @@ const LoginForm = ({ inputValue, setInputValue, login, loading,props }) => {
 
           <Form.Item>
 
-            <Button disabled={!rememberMe} htmlType="submit" style={!rememberMe? {width:'100%', background:'gray',color:'white'} : {width:'100%', background:'#85233E',color:'white'} } onClick={() => login()}>
-            Войти
+            <Button disabled={!rememberMe} htmlType="submit" style={!rememberMe ? { width: '100%', background: 'gray', color: 'white' } : { width: '100%', background: '#85233E', color: 'white' }} onClick={() => login()}>
+              Войти
             </Button>
 
-          
+
           </Form.Item>
           <Link to='/Register'>Нет аккаунта? Зарегестрируйтесь!</Link>
         </Form>
         {/* <div className="img"><img src="https://cdn-icons-png.flaticon.com/512/3456/3456388.png" alt="" /></div> */}
-     
+
         <div className={style.img}>
-            <img src={regImg} alt="" />
+          <img src={regImg} alt="" />
         </div>
       </div>
     </>

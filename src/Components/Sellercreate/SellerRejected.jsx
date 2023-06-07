@@ -8,7 +8,7 @@ const SellerRejected = () => (
     title="Ваша заявка была отмененна"
     subTitle="Please check and modify the following information before resubmitting."
     extra={[
-      <Link to='/About'style={{color:'blue'}}  key="console">
+      <Link to='/About' style={{ color: 'blue' }} key="console">
         Go Back
       </Link>,
     ]}

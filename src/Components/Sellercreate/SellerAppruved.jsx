@@ -1,11 +1,11 @@
 
 import CreateCourse from './CreateCourse';
-const SellerAppruved = ({open,close}) => {
+const SellerAppruved = ({ open, close }) => {
 
-   return(
+  return (
     <>
-  <CreateCourse />
-  </>
-   )
-  };
+      <CreateCourse />
+    </>
+  )
+};
 export default SellerAppruved;
