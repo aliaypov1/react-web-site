@@ -26,13 +26,14 @@ const VideoCourse = ({ id,props }) => {
     return (
         <div style={{  marginTop: '80px',background:'white',padding:'5px' }}>
            {
-                currentVideo.map(item =>
-                    <Card   style={{margin:'80px 0',padding:'0 0 0 60px  ',border:'none'}} extra={props} key={item.id}>
-                        <p style={{fontSize:'28px'}}>{item.title}</p>
-                        <p style={{fontSize:'38px'}}>{item.description}</p>
+                currentVideo.map((item ) => (
+                    <Card   style={{margin:'80px 0',padding:'0 0 0 60px',border:'none'}} extra={props} key={item.id}>
+                        <p style={{fontSize:'28px'}}>Описание : {item.title}</p>
+                        <div style={{fontSize:'20px'}}> Заголовок : {item.description} </div>
                          <iframe width="1000" height="605" src={`https://www.youtube.com/embed/${item.videoUrl}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             
                     </Card>
+                )
                 )
             }
             <div className="" style={{ textAlign: 'center', margin: "60px 0" }}>

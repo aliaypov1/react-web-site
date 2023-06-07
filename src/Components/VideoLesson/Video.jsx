@@ -2,6 +2,7 @@ import React from 'react';
 import Loader from '../UI/Loader/Loader';
 import VideoCourse from './VideoCourse';
 import { Link } from 'react-router-dom';
+import { Button } from 'antd';
 
 const Video = ({size,loading}) => {
     if(loading)return <div className="container"><Loader/></div> 
@@ -10,8 +11,11 @@ const Video = ({size,loading}) => {
             {
                size.length > 0 ? size.map((item, i)=>(
                     <div className="" style={{background:'white',padding:'10px'}}>
-                        <Link to={`/Test/${item.id}`}>Тесты</Link>
                         <VideoCourse id={item.id}/>
+                        <div className="" style={{textAlign:"center",margin:'30px 0'}}>
+                            
+                        <Link to={`/Test/${item.id}`}><Button>Тесты</Button></Link>
+                        </div>
                     </div>
                 ))
                 :

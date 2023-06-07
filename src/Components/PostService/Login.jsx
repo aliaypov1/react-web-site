@@ -13,7 +13,6 @@ const Login = () => {
         userName: '',
         password: ''
     })
-    const [counter, setCounter] = useState(3)
     const [alert, setAlert] = useState(false)
     const [loading, setLoading] = useState(false)
     const login = async () => {
@@ -26,7 +25,7 @@ const Login = () => {
                 getUser()
         } catch(error){
             if (error)  {
-                message.error(error.response.data.message)
+                message.error(error.response.Message)
             }
             
         setLoading(false)

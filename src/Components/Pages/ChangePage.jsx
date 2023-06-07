@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import GetPage from './GetPage';
+import Header from '../Header/Header';
+import ProfileNavigate from '../Header/ProfileHeader';
 const ChangePage = () => {
     const { id } = useParams()
     const [open, setOpen] = useState(false);
@@ -68,9 +70,14 @@ const ChangePage = () => {
     }
     return (
         <>
-            <Button onClick={showDrawer} icon={<PlusOutlined />}>
+        <Header/>
+        <ProfileNavigate/>
+        <div className="" style={{display:'flex',justifyContent:'center',margin:'40px 0'}}>
+        <Button onClick={showDrawer} icon={<PlusOutlined />}>
                 Редактировать страницу
             </Button>
+        </div>
+            
             <Drawer
                 title="Редактировать страницу"
                 width={720}
@@ -200,18 +207,7 @@ const ChangePage = () => {
                     </Row>
                     <Row gutter={16}>
                         <Col span={12}>
-                            <Form.Item
-                                name="name1"
-                                label="Title"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please enter user name',
-                                    },
-                                ]}
-                            >
-                                <Input placeholder="Title" onChange={e => setLesson({ ...lesson, title: e.target.value })} />
-                            </Form.Item>
+                            
                         </Col>
                         <Col span={12}>
                         </Col>

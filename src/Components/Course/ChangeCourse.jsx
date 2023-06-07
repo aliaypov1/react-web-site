@@ -10,6 +10,7 @@ import UploadImageForm from './UploadFile';
 const ChangeCourse = () => {
     const {id} = useParams()
     const [value, setValue] = useState({
+        courseId: id,
         Title:'',
         Description:'',
         IsFree:true,

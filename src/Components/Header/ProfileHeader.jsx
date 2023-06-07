@@ -20,14 +20,22 @@ const items = [
         children: [
           {
             label: (
-                <Link to='/Security'>Безопасность</Link>
+                <Link to='/Security'><i className="fa-solid fa-lock"></i> Безопасность</Link>
             ),
             key: 'setting:1',
           },
           {
-            label: seller ? <Link to='/ProfileSeller'>Продавец</Link>:'',
+            label: (
+              <Link to='/Favorites'><i className="fa-sharp fa-solid fa-bookmark"></i> Избранные</Link> 
+            ),
+          },
+          {
+            label: seller ? <Link to='/ProfileSeller'><i className="fa-solid fa-shop"></i> Продавец</Link>:'',
             key: 'Продавец',
           },
+         
+          
+         
          
         ],
       },
@@ -38,6 +46,12 @@ const items = [
      <Link to='/MyCourse'>Мои курсы</Link>
     ),
     key: 'alipay',
+  },
+  {
+    label: (
+      <Link to='/Favorites'><i style={{fontSize:"24px",color:'black'}} className="fa-sharp fa-solid fa-bookmark"></i></Link> 
+    ),
+    key: 'alipays',
   },
 ];
 const ProfileNavigate = () => {

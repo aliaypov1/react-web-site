@@ -12,6 +12,7 @@ import Loader from '../UI/Loader/Loader';
 import SellerBuy from '../Forms/SellerBuy';
 import CoursePaginate from './CoursePaginate';
 import Footer from '../Footer/Footer';
+import AddFavorites from '../Favorites/AddFavorites';
 const Course = () => {
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
@@ -134,13 +135,7 @@ const Course = () => {
     const lastVideoIndex = currentPage * videoPerPage;
     const firstVideoIndex = lastVideoIndex - videoPerPage;
     const currentVideo = sortedAndFilteredCourses.slice(firstVideoIndex, lastVideoIndex)
-    const paginate = pageNumber => setCurrentPage(pageNumber)
-    if(status === 'Approved'){
-        localStorage.setItem('seller','seller')
-    }else{
-        localStorage.removeItem('seller')
-    }
-    
+    const paginate = pageNumber => setCurrentPage(pageNumber) 
     return (
         <div>
 
@@ -160,11 +155,14 @@ const Course = () => {
                         <h1 className={style.about__title}>Подберем для вас<br /> Подходящий курс</h1>
                         <p className={style.about__text}>Лучшие курсы Кыргызыстана спциально  <br /> собраны для вас</p>
                         <div className={style.buttons}>
-                            {!seller ?
-                                <Link to={status === 'Rejected' ? '/Rejected' : status === 'Approved' ? '/Appruved' : status === null ? '/Partner' : '/NotReviewed'} style={{ color: 'white', padding: "20px 40px ", border: '1px white solid' }}>Стать продавцом</Link>
+                            {loading ?   <Link  style={{ color: 'white', padding: "20px 40px ", border: '1px white solid' }}>Добавить курс</Link>
+                                 :
+                            !seller ?
+                                <Link to={status === 'Rejected' ? '/Rejected' : status === 'Approved' ? '/Appruved' : status === null ? '/CreateCursSeller' : '/NotReviewed'} style={{ color: 'white', padding: "20px 40px ", border: '1px white solid' }}>Добавить курс</Link>
                                 :
-                                ''
-                            }
+                                <Link to='/ProfileSeller' style={{ color: 'white', padding: "20px 40px ", border: '1px white solid' }}>Добавить курс</Link>
+                                
+                        }
                         </div>
 
                     </div>
@@ -194,10 +192,10 @@ const Course = () => {
                     (
 
                         <>
-                            <Card key={item.id} title={'Заголовок : ' + item.title} style={{ marginBottom: '18px', width: "400px", boxShadow: ' -1px -1px 5px 0px rgba(0,0,0,0.75)' }} extra=''>
+                            <Card key={item.id} title={'Заголовок : ' + item.title} style={{ marginBottom: '18px', width: "400px", boxShadow: ' -1px -1px 5px 0px rgba(0,0,0,0.75)' }} extra={<AddFavorites id={item.id}/>}>
                                 <p style={{ textAlign: 'right', margin: '8px', }}><Link to={`/Course/${item.id}`} style={{ color: "blue" }}>Более</Link> </p>
                                 <Card type="inner" title={'Описание : ' + item.description} extra=''>
-                                    <div className="" style={{ background: '#85233E', width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "20px" }}> {sellerId === item.sellerId ? <SellerBuy /> : <Buy name={item.title} id={item.id} children={item.isFree ? 'Бесплатно' : 'купить за ' + item.price + 'сом'} />}</div>
+                                    <div className="" style={{ background: '#85233E', width: '100%', height: '100%', borderRadius: '3px', color: "white", textAlign: 'center', fontSize: "20px" }}> {<Buy name={item.title} id={item.id} children={item.isFree ? 'Бесплатно' : 'купить за ' + item.price + 'сом'} />}</div>
                                 </Card>
                             </Card>
                         </>

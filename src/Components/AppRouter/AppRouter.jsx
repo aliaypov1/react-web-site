@@ -32,6 +32,9 @@ import Question from "../Question/TestQuest";
 import QuestionAdd from "../Question/QuestionAdd";
 import AddAnswer from "../Question/AddAnswer";
 import Answers from "../Question/AnswerTest";
+import GetAllFavorites from "../Favorites/GetAllFavorites";
+import CourseVideoPage from "../Pages/CourseVideoPage";
+import ChangeVideo from "../Pages/ChangeVideo";
 
 const AppRouter = () => {
     return (
@@ -44,6 +47,7 @@ const AppRouter = () => {
                         <Route path='/NotFound' element={<NotFondPage children='Back to Home' navigate='/About' />} />
                         {parsedRoles.includes("Manager")?
                         <Route path='/DashBoard' element={<Dashboard/>}/>:''}
+                        <Route path='/Favorites' element={<GetAllFavorites/>}/>
                         <Route path='/' element={<Content/>} />
                         <Route path='/Test/:id' element={<Test/>}/>
                         <Route path='/Question/:id' element={<Question/>}/>
@@ -54,6 +58,7 @@ const AppRouter = () => {
                         <Route path='/CreateCursSeller' element={<Sellercreatecurs/>}/>
                         <Route path='/Status' element={<Status/>}/>
                         <Route path='/Partner' element={<Partner/>}/>
+                        <Route path='/ChangeVideoPage/:id' element={<ChangeVideo/>}/>
                         <Route path='/Course' element={<Course/>}/>
                         <Route path='/Details/:id' element={<Details/>}/>
                         <Route path='/Security' element={<Security/>}/>

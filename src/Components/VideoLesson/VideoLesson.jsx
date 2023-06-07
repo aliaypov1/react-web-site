@@ -2,8 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Video from './Video';
-import VideoPagination from './VideoPagination';
-import VideoPage from '../Pages/VideoPage';
 import Header from '../Header/Header';
 
 const VideoLesson = () => {

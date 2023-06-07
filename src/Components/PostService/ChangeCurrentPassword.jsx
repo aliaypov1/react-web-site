@@ -16,9 +16,9 @@ const ChangeCurrentPassword = () => {
             const res = await axios.post(`${BASE_URL}ChangeCurrentPassword`,{...value},{headers:{"Authorization": `Bearer ${localStorage.getItem('accessToken')}`}})
             console.log(res)
             message.success(res.data.message)
-        }catch(e){
-            console.log(e)
-            message.error(e.response.message)
+        }catch(error){
+            console.log(error)
+            message.error(error.response.Message)
         }
        
     }

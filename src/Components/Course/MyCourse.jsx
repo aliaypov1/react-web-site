@@ -56,15 +56,17 @@ const MyCourse = () => {
             <Header />
             <ProfileNavigate />
             <div className="container" style={{ padding: '120px 0', color: 'black' }}>
-            <div className="container" style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:'20px'}}  >
-                {loading ? <div className='container'>
+                {loading ? <div className='container' style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:'20px'}}>
+                    <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                    <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
+                    <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
                     <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
                     <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
                     <Skeleton paragraph={{ rows: 5 }} style={{ padding: '50px' }} />
                 </div>
                     :
-                  
-                   result.length > 0 ? result.map((item) =>
+                    <div className='container' style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',gap:'20px'}}>
+                 {  result.length > 0 ? result.map((item) =>
                     (
     
                         
@@ -78,12 +80,13 @@ const MyCourse = () => {
                     )
                     :
                     <h1>У вас нету купленных курсов</h1>
+                }
+                    </div>
     
                 }
                 
                 </div>
             </div>
-        </div>
     );
 };
 
